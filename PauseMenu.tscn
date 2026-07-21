@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ctpyidbce6qui"]
+
+[ext_resource type="PackedScene" uid="uid://b5weund8lkn5y" path="res://button.tscn" id="1_nov15"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1692704986]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1954709653]
+modulate = Color(0, 0, 0, 0.32156864)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="." unique_id=1474490254]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=614962029]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer" unique_id=2130908788]
+layout_mode = 2
+
+[node name="Resume" parent="Control/CenterContainer/VBoxContainer" unique_id=1382159774 instance=ExtResource("1_nov15")]
+layout_mode = 2
+text = "Resume"
+
+[node name="Restart" parent="Control/CenterContainer/VBoxContainer" unique_id=1956638755 instance=ExtResource("1_nov15")]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" parent="Control/CenterContainer/VBoxContainer" unique_id=422436797 instance=ExtResource("1_nov15")]
+layout_mode = 2
+text = "Quit"

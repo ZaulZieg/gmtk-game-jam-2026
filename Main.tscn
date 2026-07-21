@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b8wqkmtmqge8w"]
+
+[ext_resource type="Script" uid="uid://bf0mdlldnw3v" path="res://main.gd" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://cqyxkkqgfa6q0" path="res://rigid_body_2d.gd" id="2_uu6xs"]
+[ext_resource type="Script" uid="uid://pj1277y244re" path="res://pause_manager.gd" id="3_r0du0"]
+[ext_resource type="PackedScene" uid="uid://ctpyidbce6qui" path="res://PauseMenu.tscn" id="4_cm0pq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font_size = 64
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r0du0"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 50.0
+
+[node name="Node2D" type="Node2D" unique_id=2065818816]
+script = ExtResource("1_glv2v")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1639823879]
+offset_right = 1932.0
+offset_bottom = 1098.0
+color = Color(0, 0.76667637, 0.76667607, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1349124289]
+offset_left = 633.0
+offset_top = 469.0
+offset_right = 1339.0
+offset_bottom = 557.0
+text = "This is the main screen"
+label_settings = SubResource("LabelSettings_g4v7s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1786395375]
+position = Vector2(0, 876)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1601748111]
+shape = SubResource("WorldBoundaryShape2D_g4v7s")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1003402061]
+position = Vector2(282, 273)
+physics_material_override = SubResource("PhysicsMaterial_r0du0")
+script = ExtResource("2_uu6xs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1111004830]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Pause Manager" type="Node2D" parent="." unique_id=407766011]
+process_mode = 3
+script = ExtResource("3_r0du0")
+
+[node name="Pause Menu" parent="." unique_id=1692704986 instance=ExtResource("4_cm0pq")]
+process_mode = 2
+visible = false
