@@ -1,5 +1,7 @@
 extends Control
+signal puzzle_done
 @onready var control_10: Control = $CenterContainer/Panel/Control10
+@onready var Yes_button: Button = $CenterContainer/Panel/cofirmationbox/VBoxContainer/HBoxContainer/Button2
 
 @onready var cofirmationbox: CenterContainer = $CenterContainer/Panel/cofirmationbox
 @onready var Start_button: Button = $CenterContainer/Panel/Button
@@ -7,6 +9,9 @@ var tween : Tween
 func _ready() -> void:
 	Start_button.button_down.connect(start_pressed)
 	Start_button.pressed.connect(animate_start)
+	Yes_button.button_up.connect(func():
+		puzzle_done.emit()
+		)
 	
 func start_pressed():
 	control_10.pops_up()

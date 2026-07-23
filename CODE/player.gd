@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
+
 @export var SPEED : float = 500.0
 @export var dir : Vector2 = Vector2.ZERO
 @onready var flashlight : Node2D = $Node2D
 @onready var point_ligh : PointLight2D = $Node2D/PointLight2D2
 @onready var flash_switch : bool = false
 @onready var look_dir : Vector2
+@onready var label: Label = $Node2D2/CanvasLayer/Label
 func _ready() -> void:
 	pass
 	
@@ -20,6 +22,7 @@ func _physics_process(delta: float) -> void:
 		look_dir = dir.normalized()
 	
 	flashlight.rotation = look_dir.angle()
+	label.position = $Node2D2.global_position
 		
 	move_and_slide()
 
