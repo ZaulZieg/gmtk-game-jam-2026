@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dixuw5cm0tbo8"]
+
+[ext_resource type="Script" uid="uid://dy8wn4ttpauh2" path="res://CODE/connectdots.gd" id="1_xljlf"]
+[ext_resource type="Texture2D" uid="uid://clsoltimg4iee" path="res://ASS/Switch_off.png" id="2_17hhb"]
+[ext_resource type="Texture2D" uid="uid://bhgklivh3vwub" path="res://ASS/Switch_on.png" id="2_udpjy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font_size = 30
+
+[node name="Control" type="Control" unique_id=2038347590]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_xljlf")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=10031867]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1770426878]
+custom_minimum_size = Vector2(922, 450)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel" unique_id=1175738261]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -406.0
+offset_top = -179.0
+offset_right = 406.0
+offset_bottom = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="switch1" type="CheckButton" parent="CenterContainer/Panel/VBoxContainer" unique_id=1586756820]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("2_udpjy")
+theme_override_icons/unchecked = ExtResource("2_17hhb")
+
+[node name="switch2" type="CheckButton" parent="CenterContainer/Panel/VBoxContainer" unique_id=572336868]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("2_udpjy")
+theme_override_icons/unchecked = ExtResource("2_17hhb")
+
+[node name="switch3" type="CheckButton" parent="CenterContainer/Panel/VBoxContainer" unique_id=1272535700]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("2_udpjy")
+theme_override_icons/unchecked = ExtResource("2_17hhb")
+
+[node name="switch4" type="CheckButton" parent="CenterContainer/Panel/VBoxContainer" unique_id=1975386491]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("2_udpjy")
+theme_override_icons/unchecked = ExtResource("2_17hhb")
+
+[node name="Label" type="Label" parent="." unique_id=1335808820]
+layout_mode = 0
+offset_left = 603.0
+offset_top = 232.0
+offset_right = 834.0
+offset_bottom = 274.0
+text = "well how it goes"
+label_settings = SubResource("LabelSettings_g4v7s")
