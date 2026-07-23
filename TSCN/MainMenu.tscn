@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://doke6p4vpp5i2"]
 
-[ext_resource type="Script" uid="uid://cq3uhcs2pbgjv" path="res://main_menu.gd" id="1_i26rj"]
-[ext_resource type="PackedScene" uid="uid://b5weund8lkn5y" path="res://button.tscn" id="2_eiy7p"]
+[ext_resource type="Script" uid="uid://cq3uhcs2pbgjv" path="res://CODE/main_menu.gd" id="1_i26rj"]
+[ext_resource type="PackedScene" uid="uid://b5weund8lkn5y" path="res://TSCN/button.tscn" id="2_eiy7p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 140

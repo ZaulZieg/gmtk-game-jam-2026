@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b8wqkmtmqge8w"]
 
-[ext_resource type="Script" uid="uid://bf0mdlldnw3v" path="res://main.gd" id="1_glv2v"]
-[ext_resource type="Script" uid="uid://cqyxkkqgfa6q0" path="res://rigid_body_2d.gd" id="2_uu6xs"]
-[ext_resource type="Script" uid="uid://pj1277y244re" path="res://pause_manager.gd" id="3_r0du0"]
-[ext_resource type="PackedScene" uid="uid://ctpyidbce6qui" path="res://PauseMenu.tscn" id="4_cm0pq"]
+[ext_resource type="Script" uid="uid://bf0mdlldnw3v" path="res://CODE/main.gd" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://cqyxkkqgfa6q0" path="res://CODE/rigid_body_2d.gd" id="2_uu6xs"]
+[ext_resource type="Script" uid="uid://pj1277y244re" path="res://CODE/pause_manager.gd" id="3_r0du0"]
+[ext_resource type="PackedScene" uid="uid://ctpyidbce6qui" path="res://TSCN/PauseMenu.tscn" id="4_cm0pq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 64

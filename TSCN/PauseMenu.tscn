@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ctpyidbce6qui"]
 
-[ext_resource type="PackedScene" uid="uid://b5weund8lkn5y" path="res://button.tscn" id="1_nov15"]
+[ext_resource type="Script" uid="uid://baxdke5ors78p" path="res://CODE/control.gd" id="1_etnfi"]
+[ext_resource type="PackedScene" uid="uid://b5weund8lkn5y" path="res://TSCN/button.tscn" id="1_nov15"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1692704986]
 
@@ -18,6 +19,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+script = ExtResource("1_etnfi")
 
 [node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=614962029]
 layout_mode = 1
