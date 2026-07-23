@@ -10,7 +10,7 @@ func _ready() -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
-	dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	dir = Input.get_vector("left","right","up","down")
 	if dir:
 		velocity = velocity.move_toward((dir * SPEED) , 10.0)
 	else :

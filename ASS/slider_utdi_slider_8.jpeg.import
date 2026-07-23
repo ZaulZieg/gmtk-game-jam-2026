@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8s7b7jenh6il"
-path="res://.godot/imported/frame0001.png-a62498c6e1a8cb707e7e956ef2798721.ctex"
+uid="uid://bl8srsiv8vvkd"
+path="res://.godot/imported/slider_utdi_slider_8.jpeg-e0ff9c143ae4115b57fe9cf83c0835fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ASS/walk sides/frame0001.png"
-dest_files=["res://.godot/imported/frame0001.png-a62498c6e1a8cb707e7e956ef2798721.ctex"]
+source_file="res://ASS/slider_utdi_slider_8.jpeg"
+dest_files=["res://.godot/imported/slider_utdi_slider_8.jpeg-e0ff9c143ae4115b57fe9cf83c0835fa.ctex"]
 
 [params]
 
