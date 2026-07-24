@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b8pbcup1q62xl"]
+
+[ext_resource type="Texture2D" uid="uid://cdsph04o2yv2b" path="res://ASS/Note Paper UI.png" id="1_gaw2d"]
+[ext_resource type="Script" uid="uid://cqpwoov4ljae1" path="res://CODE/task_note.gd" id="1_yuh8g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("1_gaw2d")
+
+[node name="Control" type="CanvasLayer" unique_id=1940982640]
+process_mode = 2
+script = ExtResource("1_yuh8g")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1401343002]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5176471)
+
+[node name="Panel" type="Panel" parent="." unique_id=724546820]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")

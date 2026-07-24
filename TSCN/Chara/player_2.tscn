@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://6x6ep88m4oos" path="res://ASS/Sprites/walk up/frame0004.png" id="19_u3fkb"]
 [ext_resource type="Texture2D" uid="uid://ck1j3hu4uu0jk" path="res://ASS/Sprites/walk up/frame0005.png" id="20_8xlwm"]
 [ext_resource type="Texture2D" uid="uid://wf4sex1ge12s" path="res://ASS/Sprites/walk up/frame0006.png" id="21_cny0r"]
+[ext_resource type="Texture2D" uid="uid://d35uyeua1y0jh" path="res://ASS/Bubble Text.png" id="23_3kyy1"]
+[ext_resource type="Script" uid="uid://ceg0gahsh0lvy" path="res://CODE/ghostlight.gd" id="25_x0w70"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -110,9 +112,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
 radius = 35.057095
 
-[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
-font_size = 48
-
 [sub_resource type="Gradient" id="Gradient_2g38p"]
 offsets = PackedFloat32Array(0, 0.04360465, 0.17151164)
 colors = PackedColorArray(1, 1, 1, 1, 0.74626863, 0.74626863, 0.74626863, 1, 0, 0, 0, 1)
@@ -124,6 +123,17 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=354476350]
 script = ExtResource("1_30bit")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1134007]
+visible = false
+color = Color(0.15487596, 0.154876, 0.15487596, 1)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1766253694]
+visible = false
+offset_left = -2613.0
+offset_top = -1646.0
+offset_right = 2659.0
+offset_bottom = 1649.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1885471595]
 position = Vector2(0, -107.99999)
@@ -137,29 +147,19 @@ position = Vector2(1, -11)
 shape = SubResource("CircleShape2D_yf5fn")
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=2125255734]
-position = Vector2(0, -286)
+position = Vector2(83, -205)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Node2D2" unique_id=1396440768]
 script = ExtResource("9_eeojl")
 
-[node name="Label" type="Label" parent="Node2D2/CanvasLayer" unique_id=1853161230]
-offset_left = 557.0
-offset_top = 359.0
-offset_right = 763.0
-offset_bottom = 394.0
-offset_transform_enabled = true
-text = "!"
-label_settings = SubResource("LabelSettings_g4v7s")
+[node name="Label" type="Sprite2D" parent="Node2D2/CanvasLayer" unique_id=1532952759]
+position = Vector2(78, -259)
+scale = Vector2(0.08981482, 0.08981481)
+texture = ExtResource("23_3kyy1")
 metadata/_edit_use_anchors_ = true
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=703058295]
-scale = Vector2(4.42023, 4.4202304)
-energy = 0.75
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_fl2l6")
-texture_scale = 10.45
-
 [node name="Node2D" type="Node2D" parent="." unique_id=1400281821]
+position = Vector2(0, -87)
 rotation = -6.2831855
 
 [node name="PointLight2D2" type="PointLight2D" parent="Node2D" unique_id=424942841]
@@ -167,6 +167,26 @@ position = Vector2(659, -3.000023)
 rotation = -1.5707964
 scale = Vector2(2.1684232, 2.179673)
 enabled = false
-energy = 0.86
+energy = 0.36
 texture = ExtResource("10_3coe6")
 texture_scale = 0.59
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D" unique_id=703058295]
+position = Vector2(7.000004, -20.999985)
+scale = Vector2(4.42023, 4.4202304)
+enabled = false
+energy = 0.75
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_fl2l6")
+texture_scale = 4.96
+
+[node name="Area2D" type="Area2D" parent="Node2D" unique_id=1827003899]
+position = Vector2(-1.5211564e-05, 87)
+script = ExtResource("25_x0w70")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Area2D" unique_id=934843370]
+polygon = PackedVector2Array(13, -78, 967, -392, 1063, -268, 1133, -94, 1068, 80, 962, 197)
+disabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=673371315]
+wait_time = 2.0

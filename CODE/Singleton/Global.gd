@@ -5,6 +5,14 @@ signal puzzle_pc1
 signal puzzle_up
 signal puzzle_down
 signal interactable(is_on : bool)
+@onready var ghost_in_the_room : bool = false
+
+@onready var ghost_count : Array = []
+
+@onready var sanity : int = 100 : 
+	set(value):
+		sanity = value
+		print("sanity : ", sanity)
 
 @onready var game_on_pause : bool = false
 @onready var Player_sanity : int = 0
@@ -22,7 +30,8 @@ signal interactable(is_on : bool)
 			
 @onready var time_left : Timer
 
-
+func _process(delta: float) -> void:
+	pass
 
 func pause_game():
 	get_tree().paused = true

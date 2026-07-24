@@ -1,13 +1,19 @@
 [gd_scene format=3 uid="uid://4ovus3db2oxl"]
 
 [ext_resource type="Texture2D" uid="uid://bp46xlsi1k2ko" path="res://ASS/Hallway 1/dirt.PNG" id="1_3dggx"]
+[ext_resource type="Script" uid="uid://6jupaiis70d8" path="res://CODE/hallway.gd" id="1_b237e"]
 [ext_resource type="Texture2D" uid="uid://c6w3i1mxepopr" path="res://ASS/Hallway 1/open door (ladies room).PNG" id="2_rqctw"]
 [ext_resource type="Texture2D" uid="uid://cd3eatylgtdmp" path="res://ASS/Hallway 1/open door (mens room).PNG" id="3_0gc8n"]
 [ext_resource type="Texture2D" uid="uid://cvb5j3ge5nkxy" path="res://ASS/Hallway 1/open door (security room).PNG" id="4_48q48"]
 [ext_resource type="Texture2D" uid="uid://u0y5lvpebqqe" path="res://ASS/Hallway 1/outline.PNG" id="5_ejvgh"]
 [ext_resource type="Texture2D" uid="uid://d0cno6hc1t887" path="res://ASS/Hallway 1/wall.PNG" id="6_b237e"]
 [ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="7_rqctw"]
-[ext_resource type="Texture2D" uid="uid://jx2hqlxq2dkw" path="res://ASS/prop_fade_start_50.png" id="8_0gc8n"]
+[ext_resource type="Script" uid="uid://b7bxwflqk44ku" path="res://CODE/backtosecure.gd" id="9_48q48"]
+[ext_resource type="Texture2D" uid="uid://co20kk7180k1" path="res://ASS/Group 4.png" id="9_b237e"]
+[ext_resource type="Texture2D" uid="uid://cvjmy5e365jjm" path="res://icon.svg" id="11_jnpad"]
+[ext_resource type="Script" uid="uid://csatv8sxi033g" path="res://CODE/lampswitchhall.gd" id="12_mqdtk"]
+[ext_resource type="Script" uid="uid://5kfp6ik3wo0k" path="res://CODE/Ghost.gd" id="13_0ik4w"]
+[ext_resource type="Texture2D" uid="uid://berlky4iu124k" path="res://ASS/Switch on.png" id="13_q6tf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(1491, 249.64684)
@@ -24,6 +30,12 @@ size = Vector2(986.5, 132.32346)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b237e"]
 size = Vector2(468, 116.323425)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6tf1"]
+size = Vector2(165, 31.161713)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ik4w"]
+size = Vector2(40.5, 260.00003)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnpad"]
 size = Vector2(64, 902.3234)
 
@@ -33,25 +45,19 @@ size = Vector2(165, 631)
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
 radius = 42.107006
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(105, 47.000008)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(184, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(128.52405, 127.59827)
+
 [node name="Node2D" type="Node2D" unique_id=601541413]
+script = ExtResource("1_b237e")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1279012980]
-
-[node name="Dirt" type="Sprite2D" parent="StaticBody2D" unique_id=87692099]
-position = Vector2(958, 510)
-texture = ExtResource("1_3dggx")
-
-[node name="OpenDoor(ladiesRoom)" type="Sprite2D" parent="StaticBody2D" unique_id=131219957]
-position = Vector2(958, 510)
-texture = ExtResource("2_rqctw")
-
-[node name="OpenDoor(mensRoom)" type="Sprite2D" parent="StaticBody2D" unique_id=150259753]
-position = Vector2(958, 510)
-texture = ExtResource("3_0gc8n")
-
-[node name="OpenDoor(securityRoom)" type="Sprite2D" parent="StaticBody2D" unique_id=1805036998]
-position = Vector2(958, 510)
-texture = ExtResource("4_48q48")
 
 [node name="Outline" type="Sprite2D" parent="StaticBody2D" unique_id=1857374130]
 position = Vector2(958, 510)
@@ -60,6 +66,25 @@ texture = ExtResource("5_ejvgh")
 [node name="Wall" type="Sprite2D" parent="StaticBody2D" unique_id=1770794094]
 position = Vector2(958, 510)
 texture = ExtResource("6_b237e")
+
+[node name="OpenDoor(ladiesRoom)" type="Sprite2D" parent="StaticBody2D" unique_id=131219957]
+visible = false
+position = Vector2(958, 510)
+texture = ExtResource("2_rqctw")
+
+[node name="OpenDoor(mensRoom)" type="Sprite2D" parent="StaticBody2D" unique_id=150259753]
+visible = false
+position = Vector2(958, 510)
+texture = ExtResource("3_0gc8n")
+
+[node name="OpenDoor(securityRoom)" type="Sprite2D" parent="StaticBody2D" unique_id=1805036998]
+visible = false
+position = Vector2(958, 510)
+texture = ExtResource("4_48q48")
+
+[node name="Dirt" type="Sprite2D" parent="StaticBody2D" unique_id=87692099]
+position = Vector2(958, 510)
+texture = ExtResource("1_3dggx")
 
 [node name="wall" type="CollisionShape2D" parent="StaticBody2D" unique_id=535234267]
 position = Vector2(954.5, 370.17657)
@@ -81,6 +106,14 @@ shape = SubResource("RectangleShape2D_ejvgh")
 position = Vector2(311, 978.83826)
 shape = SubResource("RectangleShape2D_b237e")
 
+[node name="wall9" type="CollisionShape2D" parent="StaticBody2D" unique_id=2014437010]
+position = Vector2(614.5, 1030.4192)
+shape = SubResource("RectangleShape2D_q6tf1")
+
+[node name="wall10" type="CollisionShape2D" parent="StaticBody2D" unique_id=65922317]
+position = Vector2(1883.75, 695)
+shape = SubResource("RectangleShape2D_0ik4w")
+
 [node name="wall6" type="CollisionShape2D" parent="StaticBody2D" unique_id=639225025]
 position = Vector2(43, 525.16174)
 shape = SubResource("RectangleShape2D_jnpad")
@@ -93,11 +126,23 @@ shape = SubResource("RectangleShape2D_mqdtk")
 position = Vector2(750, 555)
 shape = SubResource("CircleShape2D_yf5fn")
 
-[node name="Player" parent="." unique_id=354476350 instance=ExtResource("7_rqctw")]
-position = Vector2(399, 540)
+[node name="lampswitch" type="Area2D" parent="." unique_id=537580606]
+position = Vector2(588.25085, 515.62396)
+script = ExtResource("12_mqdtk")
 
-[node name="PointLight2D" parent="Player" index="3" unique_id=703058295]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lampswitch" unique_id=164321964]
+position = Vector2(-1.7508545, -4.1239624)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="lampswitch" unique_id=1673675897]
+position = Vector2(1.7491454, -149.62395)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("13_q6tf1")
+
+[node name="Player" parent="." unique_id=354476350 instance=ExtResource("7_rqctw")]
+position = Vector2(389, 545)
+
+[node name="PointLight2D" parent="Player/Node2D" parent_id_path=PackedInt32Array(354476350, 1400281821) index="1" unique_id=703058295]
 energy = 0.3
 texture_scale = 4.45
 
@@ -113,10 +158,38 @@ offset_bottom = 1293.0
 color = Color(0.0142752165, 0.014275218, 0.014275218, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="light" unique_id=1754987213]
-position = Vector2(1042.435, 650.16943)
-rotation = 1.5707964
-scale = Vector2(6.9178414, 21.780987)
+position = Vector2(564, 417.00003)
+scale = Vector2(2.543882, 1.8300108)
 energy = 0.25
-texture = ExtResource("8_0gc8n")
+texture = ExtResource("9_b237e")
+
+[node name="PointLight2D2" type="PointLight2D" parent="light" unique_id=1580671113]
+position = Vector2(1295, 417.00003)
+scale = Vector2(2.543882, 1.8300108)
+energy = 0.25
+texture = ExtResource("9_b237e")
+
+[node name="portal" type="Node2D" parent="." unique_id=899326494]
+
+[node name="backtosecure" type="Area2D" parent="portal" unique_id=838008992]
+position = Vector2(351.33118, 547.02795)
+script = ExtResource("9_48q48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal/backtosecure" unique_id=11397732]
+position = Vector2(49.668823, -34.527954)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2098880334]
+visible = false
+script = ExtResource("13_0ik4w")
+
+[node name="ghost" type="Sprite2D" parent="Area2D" unique_id=1913941503]
+position = Vector2(990, 700)
+texture = ExtResource("11_jnpad")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=344933020]
+position = Vector2(989.738, 700.20087)
+shape = SubResource("RectangleShape2D_d0u6y")
+disabled = true
 
 [editable path="Player"]

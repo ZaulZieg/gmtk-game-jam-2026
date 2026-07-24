@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://sklouwvhpbt3"]
 
 [ext_resource type="Texture2D" uid="uid://04v8uc34ms5g" path="res://ASS/Security room/Security room.png" id="1_kcadd"]
+[ext_resource type="Texture2D" uid="uid://thnaemegb2xh" path="res://ASS/Security room/Door.PNG" id="2_ql1wq"]
 [ext_resource type="Texture2D" uid="uid://c5qyj2bc7y7oa" path="res://ASS/Security room/Security room/desk.PNG" id="2_y51av"]
 [ext_resource type="Texture2D" uid="uid://drwbx47nkxis2" path="res://ASS/Security room/Security room/chair.PNG" id="3_1q5cr"]
 [ext_resource type="Script" uid="uid://byrsmc3dur3ij" path="res://CODE/desk.gd" id="3_7s5px"]
@@ -62,6 +63,10 @@ color = Color(0.06879827, 0.06879828, 0.06879828, 1)
 position = Vector2(960, 544)
 texture = ExtResource("1_kcadd")
 
+[node name="Door2" type="Sprite2D" parent="bg" unique_id=374656748]
+position = Vector2(962, 544)
+texture = ExtResource("2_ql1wq")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg" unique_id=646749908]
 position = Vector2(837, 300)
 shape = SubResource("RectangleShape2D_g4v7s")
@@ -99,10 +104,11 @@ shape = SubResource("CircleShape2D_g4v7s")
 
 [node name="Player" parent="." unique_id=354476350 instance=ExtResource("5_kcadd")]
 y_sort_enabled = true
-position = Vector2(512, 660)
+position = Vector2(674, 527)
 
 [node name="PointLight2D" parent="Player" index="3" unique_id=703058295]
 visible = false
+energy = 1.34
 
 [node name="desk" type="StaticBody2D" parent="." unique_id=309327070]
 y_sort_enabled = true
