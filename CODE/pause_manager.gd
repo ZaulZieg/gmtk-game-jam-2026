@@ -13,11 +13,11 @@ func _input(event: InputEvent) -> void:
 			else : 
 				unpause()
 func pause():
-	Global.pause_game = true
+	Global.pause_game()
 	get_tree().paused = true
 	pause_menu.visible = true
 
 func unpause():
 	get_tree().paused = false
-	Global.pause_game = false
+	Global.unpause_game()
 	pause_menu.visible = false

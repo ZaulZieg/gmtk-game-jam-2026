@@ -2,11 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://ddpe05atc4f74" path="res://ASS/—Pngtree—fresh and vibrant light green_15152807.jpg" id="1_2g38p"]
 [ext_resource type="PackedScene" uid="uid://cbvo7tbp4yi00" path="res://TSCN/Chara/player.tscn" id="2_fl2l6"]
+[ext_resource type="Script" uid="uid://nuxp1lg06tky" path="res://TSCN/canvas_layer.gd" id="3_53sty"]
 [ext_resource type="Texture2D" uid="uid://cvjmy5e365jjm" path="res://icon.svg" id="3_fl2l6"]
 [ext_resource type="Texture2D" uid="uid://co20kk7180k1" path="res://ASS/Group 4.png" id="3_tt41i"]
+[ext_resource type="Script" uid="uid://k684wpluxj1u" path="res://CODE/interactable.gd" id="4_njj43"]
+[ext_resource type="Script" uid="uid://ogyct5p24s6m" path="res://CODE/puzzle_area.gd" id="6_cmywb"]
+[ext_resource type="Script" uid="uid://d2ajfrr4vpm2u" path="res://CODE/pcarea.gd" id="7_w5lpw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font_size = 25
 
 [sub_resource type="Gradient" id="Gradient_2g38p"]
-offsets = PackedFloat32Array(0, 0.04360465, 0.19476745)
+offsets = PackedFloat32Array(0, 0.04360465, 0.17151164)
 colors = PackedColorArray(1, 1, 1, 1, 0.74626863, 0.74626863, 0.74626863, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fl2l6"]
@@ -20,6 +27,12 @@ size = Vector2(129, 131.5)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yf5fn"]
 polygon = PackedVector2Array(1284, 316, 1412, 319, 1412, 445, 1283, 442)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 196.06377
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 171.54883
+
 [node name="Node2D" type="Node2D" unique_id=1268807334]
 
 [node name="—pngtree—freshAndVibrantLightGreen15152807" type="Sprite2D" parent="." unique_id=259784172]
@@ -32,9 +45,24 @@ color = Color(0, 0, 0, 1)
 [node name="Player" parent="." unique_id=543537422 instance=ExtResource("2_fl2l6")]
 position = Vector2(659, 458)
 
+[node name="Node2D2" type="Node2D" parent="Player" unique_id=1949298255]
+position = Vector2(-102, -99)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Node2D2" unique_id=1479806387]
+script = ExtResource("3_53sty")
+
+[node name="Label" type="Label" parent="Player/Node2D2/CanvasLayer" unique_id=1756005733]
+offset_left = 557.0
+offset_top = 359.0
+offset_right = 763.0
+offset_bottom = 394.0
+offset_transform_enabled = true
+text = "click E to interact"
+label_settings = SubResource("LabelSettings_g4v7s")
+
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=816786217]
 scale = Vector2(4.42023, 4.4202304)
-energy = 0.66
+energy = 0.75
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_fl2l6")
 texture_scale = 10.45
@@ -52,6 +80,7 @@ texture = ExtResource("3_tt41i")
 texture_scale = 0.59
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=964661305]
+script = ExtResource("4_njj43")
 
 [node name="Icon" type="Sprite2D" parent="StaticBody2D" unique_id=1434767036]
 position = Vector2(1347, 382)
@@ -62,4 +91,23 @@ position = Vector2(1349.5, 383.25)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D" unique_id=1451999288]
+visible = false
 occluder = SubResource("OccluderPolygon2D_yf5fn")
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D" unique_id=1695250295]
+position = Vector2(1349, 379)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D" unique_id=843584732]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="puzzle area" type="CanvasLayer" parent="." unique_id=1652104427]
+process_mode = 2
+visible = false
+script = ExtResource("6_cmywb")
+
+[node name="pcarea" type="Area2D" parent="." unique_id=293307190]
+position = Vector2(1598, 794)
+script = ExtResource("7_w5lpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pcarea" unique_id=1086678668]
+shape = SubResource("CircleShape2D_yf5fn")
