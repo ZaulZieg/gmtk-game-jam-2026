@@ -21,6 +21,6 @@ func animate() -> void:
 	tween.tween_property(label, "offset_transform_position_ratio:y", 0.0, 1.0)
 	
 func start_game() -> void:
-	get_tree().change_scene_to_file("res://TSCN/Main.tscn")
+	get_tree().change_scene_to_file("res://TSCN/maps/security_room.tscn")
 func quit_game() -> void:
 	get_tree().call_deferred("quit")
