@@ -111,7 +111,7 @@ animations = [{
 radius = 35.057095
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
-font_size = 25
+font_size = 48
 
 [sub_resource type="Gradient" id="Gradient_2g38p"]
 offsets = PackedFloat32Array(0, 0.04360465, 0.17151164)
@@ -137,7 +137,7 @@ position = Vector2(1, -11)
 shape = SubResource("CircleShape2D_yf5fn")
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=2125255734]
-position = Vector2(-102, -99)
+position = Vector2(0, -286)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Node2D2" unique_id=1396440768]
 script = ExtResource("9_eeojl")
@@ -148,7 +148,7 @@ offset_top = 359.0
 offset_right = 763.0
 offset_bottom = 394.0
 offset_transform_enabled = true
-text = "click E to interact"
+text = "!"
 label_settings = SubResource("LabelSettings_g4v7s")
 metadata/_edit_use_anchors_ = true
 

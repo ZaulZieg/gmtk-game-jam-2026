@@ -32,7 +32,7 @@ size = Vector2(439, 27)
 radius = 41.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(307, 224)
+size = Vector2(270, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
 size = Vector2(158, 190)
@@ -67,11 +67,11 @@ position = Vector2(837, 300)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="bg" unique_id=300689399]
-position = Vector2(1227, 487)
+position = Vector2(1190, 487)
 shape = SubResource("SegmentShape2D_yf5fn")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="bg" unique_id=1765762004]
-position = Vector2(444, 0)
+position = Vector2(471, 0)
 shape = SubResource("SegmentShape2D_g4v7s")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="bg" unique_id=1362358228]
@@ -99,7 +99,7 @@ shape = SubResource("CircleShape2D_g4v7s")
 
 [node name="Player" parent="." unique_id=354476350 instance=ExtResource("5_kcadd")]
 y_sort_enabled = true
-position = Vector2(776, 879)
+position = Vector2(512, 660)
 
 [node name="PointLight2D" parent="Player" index="3" unique_id=703058295]
 visible = false
@@ -115,7 +115,7 @@ position = Vector2(574, 723)
 texture = ExtResource("2_y51av")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="desk" unique_id=1039971466]
-position = Vector2(589.5, 779)
+position = Vector2(571, 779)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="Area2D" type="Area2D" parent="desk" unique_id=1702865270]
@@ -126,7 +126,7 @@ position = Vector2(16.2276, 122.59143)
 shape = SubResource("RectangleShape2D_fcnqv")
 
 [node name="chair" type="StaticBody2D" parent="." unique_id=1308901504]
-position = Vector2(645, 898)
+position = Vector2(605, 898)
 
 [node name="Chair" type="Sprite2D" parent="chair" unique_id=928760910]
 texture = ExtResource("3_1q5cr")
