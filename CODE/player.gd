@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var SPEED : float = 500.0
+@export var SPEED : float = 200.0
 @export var dir : Vector2 = Vector2.ZERO
 @onready var flashlight : Node2D = $Node2D
 @onready var point_ligh : PointLight2D = $Node2D/PointLight2D2
@@ -23,9 +24,20 @@ func _physics_process(delta: float) -> void:
 		dir.x = 0
 	
 	if dir:
-		velocity = velocity.move_toward((dir * SPEED) , 20.0)
+		if dir == Vector2.DOWN:
+			anim.play("walk_down")
+		elif dir == Vector2.UP:
+			anim.play("walk_up")
+		elif dir == Vector2.LEFT:
+			anim.flip_h = false
+			anim.play("walk_left")
+		elif dir == Vector2.RIGHT:
+			anim.flip_h = true
+			anim.play("walk_left")
+		velocity = (dir * SPEED) * (delta * 100)
 	else :
-		velocity = velocity.move_toward(Vector2.ZERO, 20.0)
+		velocity = velocity.move_toward(Vector2.ZERO, 50.0)
+		anim.pause()
 		
 	if dir != Vector2.ZERO:
 		look_dir = dir.normalized()
