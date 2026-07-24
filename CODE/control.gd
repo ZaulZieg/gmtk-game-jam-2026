@@ -11,12 +11,12 @@ func _ready() -> void:
 
 func resume_game() -> void :
 	get_tree().paused = false
-	Global.pause_game = false
+	Global.pause_game()
 	get_parent().visible = false
 	
 func restart_game() -> void:
 	get_tree().paused = false
-	Global.pause_game = false
+	Global.unpause_game()
 	get_parent().visible = false
 	get_tree().call_deferred("reload_current_scene")
 	

@@ -8,16 +8,19 @@ func _ready() -> void:
 	body_exited.connect(player_exited)
 
 func _process(delta: float) -> void:
-	interact_label.visible = player_inside.size() > 0
+	#Global.interactable_bool = player_inside.size() > 0
+	pass
 	
 	
 func player_entered(body):
 	if body is CharacterBody2D:
 		player_inside.append(body)
+		Global.interactable_arr.push_front(body)
 
 func player_exited(body):
 	if body is CharacterBody2D:
 		player_inside.pop_back()
+		Global.interactable_arr.pop_back()
 		
 func _input(event: InputEvent) -> void:
 	
