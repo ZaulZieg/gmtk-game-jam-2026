@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://sklouwvhpbt3"]
+
+[ext_resource type="Texture2D" uid="uid://04v8uc34ms5g" path="res://ASS/Security room/Security room.png" id="1_kcadd"]
+[ext_resource type="Texture2D" uid="uid://c5qyj2bc7y7oa" path="res://ASS/Security room/Security room/desk.PNG" id="2_y51av"]
+[ext_resource type="Texture2D" uid="uid://drwbx47nkxis2" path="res://ASS/Security room/Security room/chair.PNG" id="3_1q5cr"]
+[ext_resource type="Script" uid="uid://byrsmc3dur3ij" path="res://CODE/desk.gd" id="3_7s5px"]
+[ext_resource type="Texture2D" uid="uid://cel0ty7ijjyoa" path="res://ASS/Security room/Security room/quest note.PNG" id="4_7s5px"]
+[ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="5_kcadd"]
+[ext_resource type="Script" uid="uid://d1dprhxftc7vk" path="res://CODE/QuestNote_Area.gd" id="5_y51av"]
+[ext_resource type="Script" uid="uid://rx3rdq7aqg5b" path="res://CODE/security_room_door.gd" id="7_1q5cr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(790, 382)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yf5fn"]
+a = Vector2(-7, 497)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_g4v7s"]
+a = Vector2(12, 995)
+b = Vector2(-5, 111)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_57qmd"]
+a = Vector2(784, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(119, 368)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
+size = Vector2(439, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 41.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(307, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
+size = Vector2(158, 190)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(124, 45.041245)
+
+[sub_resource type="Gradient" id="Gradient_1q5cr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf5fn"]
+gradient = SubResource("Gradient_1q5cr")
+fill = 1
+fill_from = Vector2(0.53205127, 0)
+fill_to = Vector2(0.5576923, 0.6645299)
+
+[node name="Node2D" type="Node2D" unique_id=1760443057]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=705175121]
+offset_right = 1981.0
+offset_bottom = 1147.0
+color = Color(0.06879827, 0.06879828, 0.06879828, 1)
+
+[node name="bg" type="StaticBody2D" parent="." unique_id=229643338]
+
+[node name="Background" type="Sprite2D" parent="bg" unique_id=917797800]
+position = Vector2(960, 544)
+texture = ExtResource("1_kcadd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg" unique_id=646749908]
+position = Vector2(837, 300)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="bg" unique_id=300689399]
+position = Vector2(1227, 487)
+shape = SubResource("SegmentShape2D_yf5fn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bg" unique_id=1765762004]
+position = Vector2(444, 0)
+shape = SubResource("SegmentShape2D_g4v7s")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="bg" unique_id=1362358228]
+position = Vector2(452, 982)
+shape = SubResource("SegmentShape2D_57qmd")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="bg" unique_id=748826906]
+position = Vector2(1160.5, 798)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="bg" unique_id=1775906954]
+position = Vector2(1008.5, 502.5)
+shape = SubResource("RectangleShape2D_3gngh")
+
+[node name="QN" type="Area2D" parent="." unique_id=800642469]
+script = ExtResource("5_y51av")
+
+[node name="QuestNote" type="Sprite2D" parent="QN" unique_id=109223005]
+position = Vector2(1160, 742)
+texture = ExtResource("4_7s5px")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QN" unique_id=412827317]
+position = Vector2(1075, 795)
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Player" parent="." unique_id=354476350 instance=ExtResource("5_kcadd")]
+y_sort_enabled = true
+position = Vector2(776, 879)
+
+[node name="PointLight2D" parent="Player" index="3" unique_id=703058295]
+visible = false
+
+[node name="desk" type="StaticBody2D" parent="." unique_id=309327070]
+y_sort_enabled = true
+position = Vector2(-3, 95)
+script = ExtResource("3_7s5px")
+
+[node name="Desk" type="Sprite2D" parent="desk" unique_id=1994882890]
+y_sort_enabled = true
+position = Vector2(574, 723)
+texture = ExtResource("2_y51av")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="desk" unique_id=1039971466]
+position = Vector2(589.5, 779)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="Area2D" type="Area2D" parent="desk" unique_id=1702865270]
+position = Vector2(786.7724, 672.40857)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="desk/Area2D" unique_id=344328980]
+position = Vector2(16.2276, 122.59143)
+shape = SubResource("RectangleShape2D_fcnqv")
+
+[node name="chair" type="StaticBody2D" parent="." unique_id=1308901504]
+position = Vector2(645, 898)
+
+[node name="Chair" type="Sprite2D" parent="chair" unique_id=928760910]
+texture = ExtResource("3_1q5cr")
+
+[node name="Door" type="Area2D" parent="." unique_id=697755773]
+position = Vector2(685.5313, 483.95877)
+script = ExtResource("7_1q5cr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=1075299051]
+position = Vector2(-7.531311, 12.520599)
+shape = SubResource("RectangleShape2D_d0u6y")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1396696971]
+color = Color(0.6378432, 0.6378432, 0.63784313, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1856003193]
+position = Vector2(834, 552)
+scale = Vector2(12.03125, 13.375)
+texture = SubResource("GradientTexture2D_yf5fn")
+
+[editable path="Player"]
