@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bcd5ecmyhfwti"]
+
+[ext_resource type="Texture2D" uid="uid://bl8srsiv8vvkd" path="res://ASS/slider_utdi_slider_8.jpeg" id="1_1vi87"]
+[ext_resource type="Script" uid="uid://ep40gp4q6cf2" path="res://TSCN/puzzle/ads/ad_1.gd" id="1_6nm15"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.987701, 0, 0.1190458, 1)
+
+[node name="Control" type="Control" unique_id=134160026]
+custom_minimum_size = Vector2(336, 283)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1584.0
+offset_bottom = -797.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6nm15")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=719248717]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1625821805]
+z_as_relative = false
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 23.0
+color = Color(0.45452422, 0.45452428, 0.45452422, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=988968678]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1273370076]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer" unique_id=927378859]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer" unique_id=358700957]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "label"
+label_settings = SubResource("LabelSettings_g4v7s")
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=236559463]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_g4v7s")
+text = "x"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1629981968]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_1vi87")
+expand_mode = 5

@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://pb5hf6bn0wgd"]
+
+[ext_resource type="Script" uid="uid://bw6nbi2dnifld" path="res://CODE/windows.gd" id="1_ftgyu"]
+[ext_resource type="PackedScene" uid="uid://bcd5ecmyhfwti" path="res://TSCN/puzzle/ads/ad1.tscn" id="2_0tia0"]
+[ext_resource type="Script" uid="uid://b7dqvaoi8kkxr" path="res://TSCN/puzzle/control_10.gd" id="2_spl2v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.08235294, 0.6509804, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qmd"]
+bg_color = Color(0.59607846, 0.8509804, 0.21568628, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font_size = 24
+
+[node name="Control" type="Control" unique_id=820425187]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ftgyu")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2070974094]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1600965708]
+custom_minimum_size = Vector2(670, 580)
+clip_contents = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/Panel" unique_id=1182246576]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 511.0
+offset_right = 160.0
+offset_bottom = 557.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_g4v7s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_57qmd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g4v7s")
+text = "SHUT OFF"
+
+[node name="cofirmationbox" type="CenterContainer" parent="CenterContainer/Panel" unique_id=1118049122]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/cofirmationbox" unique_id=1016101057]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/cofirmationbox/VBoxContainer" unique_id=1628431407]
+layout_mode = 2
+text = "Are you sure?"
+label_settings = SubResource("LabelSettings_g4v7s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/cofirmationbox/VBoxContainer" unique_id=1630116184]
+layout_mode = 2
+alignment = 1
+
+[node name="Button2" type="Button" parent="CenterContainer/Panel/cofirmationbox/VBoxContainer/HBoxContainer" unique_id=986347273]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "yes"
+
+[node name="Button" type="Button" parent="CenterContainer/Panel/cofirmationbox/VBoxContainer/HBoxContainer" unique_id=2145091791]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "no"
+
+[node name="Control10" type="Control" parent="CenterContainer/Panel" unique_id=1195911860]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_spl2v")
+
+[node name="Control" parent="CenterContainer/Panel/Control10" unique_id=134160026 instance=ExtResource("2_0tia0")]
+visible = false
+layout_mode = 1
+offset_left = 184.0
+offset_top = 130.0
+offset_right = 480.0
+offset_bottom = 373.0
+
+[node name="Control2" parent="CenterContainer/Panel/Control10" unique_id=909508120 instance=ExtResource("2_0tia0")]
+visible = false
+layout_mode = 1
+offset_left = 310.0
+offset_top = 33.0
+offset_right = 606.0
+offset_bottom = 276.0
+
+[node name="Control3" parent="CenterContainer/Panel/Control10" unique_id=1536952355 instance=ExtResource("2_0tia0")]
+visible = false
+layout_mode = 1
+offset_left = 325.0
+offset_top = 242.0
+offset_right = 621.0
+offset_bottom = 485.0
+
+[node name="Control4" parent="CenterContainer/Panel/Control10" unique_id=1384672669 instance=ExtResource("2_0tia0")]
+visible = false
+layout_mode = 1
+offset_left = 12.0
+offset_top = 294.0
+offset_right = 308.0
+offset_bottom = 537.0
+
+[node name="Control5" parent="CenterContainer/Panel/Control10" unique_id=765807763 instance=ExtResource("2_0tia0")]
+visible = false
+layout_mode = 1
+offset_left = 19.0
+offset_top = 28.0
+offset_right = 315.0
+offset_bottom = 271.0
+
+[node name="Control6" parent="CenterContainer/Panel/Control10" unique_id=2006197618 instance=ExtResource("2_0tia0")]
+visible = false
+layout_mode = 1
+offset_left = 158.0
+offset_top = 156.0
+offset_right = 454.0
+offset_bottom = 399.0
+
+[node name="Control7" parent="CenterContainer/Panel/Control10" unique_id=1239284028 instance=ExtResource("2_0tia0")]
+visible = false
+layout_mode = 1
+offset_left = 171.0
+offset_top = 184.0
+offset_right = 467.0
+offset_bottom = 427.0
+
+[node name="Control8" parent="CenterContainer/Panel/Control10" unique_id=1806019459 instance=ExtResource("2_0tia0")]
+visible = false
+layout_mode = 1
+offset_left = 192.0
+offset_top = 212.0
+offset_right = 488.0
+offset_bottom = 455.0
+
+[node name="Control9" parent="CenterContainer/Panel/Control10" unique_id=1799192137 instance=ExtResource("2_0tia0")]
+visible = false
+layout_mode = 1
+offset_left = 221.0
+offset_top = 241.0
+offset_right = 517.0
+offset_bottom = 484.0

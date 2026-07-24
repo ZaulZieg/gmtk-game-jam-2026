@@ -1,7 +1,42 @@
 [gd_scene format=3 uid="uid://cbvo7tbp4yi00"]
 
 [ext_resource type="Script" uid="uid://b8ilvktfrcoxm" path="res://CODE/player.gd" id="1_rl46v"]
-[ext_resource type="Texture2D" uid="uid://cvjmy5e365jjm" path="res://icon.svg" id="2_wghyt"]
+[ext_resource type="Texture2D" uid="uid://br01c0evyttri" path="res://ASS/Sprites/walk down/frame0000.png" id="2_nx8b6"]
+[ext_resource type="Texture2D" uid="uid://drmfg0xeflqh5" path="res://ASS/Sprites/walk down/frame0001.png" id="3_ru8rm"]
+[ext_resource type="Texture2D" uid="uid://cyay4htovnb5n" path="res://ASS/Sprites/walk down/frame0002.png" id="4_lonl6"]
+[ext_resource type="Texture2D" uid="uid://c0y7mo7m6hu1m" path="res://ASS/Sprites/walk down/frame0003.png" id="5_00net"]
+[ext_resource type="Texture2D" uid="uid://co6ktu7xbnf7u" path="res://ASS/Sprites/walk down/frame0004.png" id="6_2rtjq"]
+[ext_resource type="Texture2D" uid="uid://deerqqq75hs21" path="res://ASS/Sprites/walk down/frame0005.png" id="7_dq375"]
+[ext_resource type="Texture2D" uid="uid://dydykcvodsq37" path="res://ASS/Sprites/walk down/frame0006.png" id="8_034nl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nx8b6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ru8rm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lonl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_00net")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2rtjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dq375")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_034nl")
+}],
+"loop": 1,
+"name": &"walk_down",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
 radius = 50.01
@@ -9,8 +44,10 @@ radius = 50.01
 [node name="Player" type="CharacterBody2D" unique_id=543537422]
 script = ExtResource("1_rl46v")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=193159047]
-texture = ExtResource("2_wghyt")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1399324986]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886297786]
 shape = SubResource("CircleShape2D_yf5fn")
