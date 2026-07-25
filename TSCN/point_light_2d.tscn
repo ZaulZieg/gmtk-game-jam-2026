@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bupbdguvgeaf5"]
+
+[ext_resource type="Texture2D" uid="uid://co20kk7180k1" path="res://ASS/Group 4.png" id="1_ayuy8"]
+
+[node name="PointLight2D" type="PointLight2D" unique_id=444991419]
+scale = Vector2(2.543882, 1.8300108)
+energy = 0.65
+texture = ExtResource("1_ayuy8")

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b5weund8lkn5y" path="res://TSCN/button.tscn" id="1_nov15"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1692704986]
+process_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1954709653]
 modulate = Color(0, 0, 0, 0.32156864)
@@ -35,10 +36,6 @@ layout_mode = 2
 [node name="Resume" parent="Control/CenterContainer/VBoxContainer" unique_id=1382159774 instance=ExtResource("1_nov15")]
 layout_mode = 2
 text = "Resume"
-
-[node name="Restart" parent="Control/CenterContainer/VBoxContainer" unique_id=1956638755 instance=ExtResource("1_nov15")]
-layout_mode = 2
-text = "Restart"
 
 [node name="Quit" parent="Control/CenterContainer/VBoxContainer" unique_id=422436797 instance=ExtResource("1_nov15")]
 layout_mode = 2

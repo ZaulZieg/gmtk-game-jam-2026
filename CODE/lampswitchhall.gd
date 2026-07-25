@@ -8,7 +8,10 @@ func _ready() -> void:
 	body_entered.connect(player_entered)
 	body_exited.connect(player_exited)
 	
-
+func _process(delta: float) -> void:
+	point_light_2d.enabled = Boolvariable.hallway1_light_left
+	
+	
 func player_entered(body):
 	if body is Player:
 		Global.interactable_arr.append(body)
@@ -22,11 +25,7 @@ func player_exited(body):
 func _input(event: InputEvent) -> void:
 	if event and detect.size() > 0:
 		if Input.is_action_just_pressed("interact"):
-			point_light_2d.enabled = !point_light_2d.enabled
-			point_light_2d_2.enabled = !point_light_2d_2.enabled
-			if point_light_2d.enabled == true:
-				player.room_light_on = true
-				player.update_sanity_timer()
-			else:
-				player.room_light_on = false
-				player.update_sanity_timer()
+			Boolvariable.hallway1_light_left = !Boolvariable.hallway1_light_left
+			#player.room_light_on = point_light_2d.enabled or point_light_2d_2.enabled
+			#print(point_light_2d.enabled or point_light_2d_2.enabled)
+			Boolvariable.update_sanity()

@@ -11,12 +11,21 @@ class_name Player
 @onready var flash_switch : bool = false
 @onready var look_dir : Vector2 = Vector2.ZERO
 @onready var label: Sprite2D = $Node2D2/CanvasLayer/Label
+@onready var player_able_to_move : bool = true
+@onready var pause_layer: CanvasLayer = $CanvasLayer
+@onready var progress_bar: ProgressBar = $GUI/Control/MarginContainer/HBoxContainer/ProgressBar
+@onready var countdown : RichTextLabel = $GUI/Control/MarginContainer/HBoxContainer/RichTextLabel
+@onready var gui: Control = $GUI/Control
 
 @onready var ghost_count : int = 0
 
-var ghost_in_room : bool = false
+var room : String = ""
+
+var ghost_in_hallway1 : bool = false
+var ghost_in_hallway2 : bool = false
 var ghost_in_flashlight : bool = false
-var room_light_on : bool = true
+var hallway_light_on : bool = true
+var hallway2_light_on : bool = true
 
 func _ready() -> void:
 	Global.puzzle_up.connect(func():
@@ -24,7 +33,20 @@ func _ready() -> void:
 		)
 	timer.timeout.connect(on_timer_timeout)
 	
+	Global.dialog_closed.connect(func(): gui.visible = true)
+	
+	point_ligh.enabled = Boolvariable.player_flashlisght
+	$Node2D/PointLight2D.enabled = Boolvariable.player_flashlisght
+	$Node2D/Area2D/CollisionPolygon2D.disabled = !Boolvariable.player_flashlisght
+	
+	Global.player_in_room = get_parent().name
+	
+	Boolvariable.change_update.connect(update_sanity_timer)
+	Countdown.time_changed.connect(time_print)
 func _physics_process(delta: float) -> void:
+	if !player_able_to_move:
+		return
+		
 	dir = Input.get_vector("left","right","up","down")
 	
 	if dir.x != 0:
@@ -53,30 +75,44 @@ func _physics_process(delta: float) -> void:
 	
 	flashlight.rotation = look_dir.angle()
 	label.position = $Node2D2.global_position
-		
+	progress_bar.value = Global.sanity
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
+	if not player_able_to_move:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				flash_switch = !flash_switch
-				point_ligh.enabled = flash_switch
-				$Node2D/PointLight2D.enabled = flash_switch
-				$Node2D/Area2D/CollisionPolygon2D.disabled = !flash_switch
+				Boolvariable.player_flashlisght = !Boolvariable.player_flashlisght
+				point_ligh.enabled = Boolvariable.player_flashlisght
+				$Node2D/PointLight2D.enabled = Boolvariable.player_flashlisght
+				$Node2D/Area2D/CollisionPolygon2D.disabled = !Boolvariable.player_flashlisght
+				Boolvariable.update_sanity()
+	elif event is InputEventKey:
+		if Input.is_action_just_pressed("ui_cancel") and Global.able_to_pause:
+			Global.pause_game()
+			pause_layer.visible = true
 
-func update_sanity_timer():
-	var should_reduce: bool = false
-	if ghost_in_room and room_light_on:
-		should_reduce = true
-	if ghost_in_flashlight:
-		should_reduce = true
-	if should_reduce:
+func update_sanity_timer(hurt : bool):
+	if hurt:
 		if timer.is_stopped():
 			timer.start()
 	else:
 		timer.stop()
-	print("ghost : ", should_reduce)
+	
+	
+	#var should_reduce: bool = false
+	#if ghost_in_flashlight:
+		#should_reduce = true
+	#if should_reduce:
+		#if timer.is_stopped():
+			#timer.start()
+	#else:
+		#timer.stop()
+	print("ghost : ", hurt)
 
 func on_timer_timeout():
 	Global.sanity -= 5
+func time_print(minutes, seconds) :
+	countdown.text = "%02d:%02d" % [minutes,seconds]

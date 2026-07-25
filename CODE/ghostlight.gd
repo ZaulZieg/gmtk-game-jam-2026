@@ -19,10 +19,10 @@ func _physics_process(delta: float) -> void:
 func ghost_inside(area):
 	if area is Ghosty:
 		ghost_count.append(area)
-		if ghost_count.size() > 0 : player.ghost_in_flashlight = true; player.update_sanity_timer()
+		if ghost_count.size() > 0 : Boolvariable.ghost_in_flashlight = true; Boolvariable.update_sanity()
 
 func ghost_exited(area):
 	if area is Ghosty:
 		ghost_count.pop_back()
 		if ghost_count.size() < 1:
-			player.ghost_in_flashlight = false ; player.update_sanity_timer()
+			Boolvariable.ghost_in_flashlight = false ; Boolvariable.update_sanity()

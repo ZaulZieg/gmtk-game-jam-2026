@@ -14,7 +14,7 @@ func on_hover():
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_BACK)
-	tween.tween_property(self, "offset_transform_scale", Vector2(1.3, 1.3), 0.5)
+	tween.tween_property(self, "offset_transform_scale", Vector2(1.1, 1.1), 0.5)
 	
 func on_leave():
 	if tween :

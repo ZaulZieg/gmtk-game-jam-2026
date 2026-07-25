@@ -15,4 +15,4 @@ func Player_exiting(body):
 func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0:
 		if Input.is_action_just_pressed("interact"):
-			get_tree().change_scene_to_file("res://TSCN/maps/Hallway.tscn")
+			SceneTransition.change_scene("res://TSCN/maps/Hallway.tscn")
