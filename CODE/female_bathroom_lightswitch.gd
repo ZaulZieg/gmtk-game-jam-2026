@@ -11,6 +11,9 @@ func player_in(body):
 	super(body)
 	
 func _input(event: InputEvent) -> void:
+	if Boolvariable.is_playing_puzzle:
+		return
+		
 	if event and player_count.size() > 0 :
 		if Input.is_action_just_pressed("interact"):
 			if !point_light_2d.enabled:

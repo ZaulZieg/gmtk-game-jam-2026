@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://dsobrvxv5lodx"]
 
 [ext_resource type="Script" uid="uid://drpvk5y0jdidf" path="res://CODE/todolist.gd" id="1_1n14i"]
+[ext_resource type="FontFile" uid="uid://dv7fl8vs7uoii" path="res://ASS/fonts/NothingYouCouldDo.ttf" id="2_as2d4"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1274522397]
-
-[node name="Control" type="Control" parent="." unique_id=640249845]
+[node name="Control" type="Control" unique_id=640249845]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 3
 anchors_preset = 11
@@ -15,7 +14,7 @@ grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("1_1n14i")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=799972603]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=799972603]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,12 +22,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/HBoxContainer" unique_id=1724498863]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer" unique_id=1724498863]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 46
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_as2d4")
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
-text = "this is the list"
+text = "Loading......"
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=415816347]

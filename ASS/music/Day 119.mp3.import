@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Day 119.mp3-0504283dc9ab5c2599c4e824e6160143.
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

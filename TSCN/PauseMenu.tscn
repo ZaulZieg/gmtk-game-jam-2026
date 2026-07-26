@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://baxdke5ors78p" path="res://CODE/control.gd" id="1_etnfi"]
 [ext_resource type="PackedScene" uid="uid://b5weund8lkn5y" path="res://TSCN/button.tscn" id="1_nov15"]
+[ext_resource type="PackedScene" uid="uid://qq8vm7dvhldi" path="res://TSCN/Task Note2.tscn" id="3_4ebuy"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1692704986]
 process_mode = 2
@@ -27,6 +28,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1252.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -40,3 +42,8 @@ text = "Resume"
 [node name="Quit" parent="Control/CenterContainer/VBoxContainer" unique_id=422436797 instance=ExtResource("1_nov15")]
 layout_mode = 2
 text = "Quit"
+
+[node name="Control" parent="Control" unique_id=1576693091 instance=ExtResource("3_4ebuy")]
+layout_mode = 1
+offset_left = 1047.0
+offset_right = 105.0

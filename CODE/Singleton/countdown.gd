@@ -5,7 +5,7 @@ signal times_up
 
 @onready var timer = Timer.new()
 
-var time_left := 300
+var time_left := 210
 
 func _ready() -> void:
 	add_child(timer)
@@ -18,6 +18,9 @@ func start_timer(minutes):
 	
 func _on_timeout():
 	time_left-= 1
+	if time_left < 1:
+		timer.stop()
+		SceneTransition.change_scene("res://TSCN/GameOverScreen.tscn")
 	
 	time_changed.emit(
 		time_left / 60,

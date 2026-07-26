@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://duyhsksdy0eqh"]
+
+[ext_resource type="Script" uid="uid://pd1iuceef1a4" path="res://CODE/game_over_screen.gd" id="1_fl5t6"]
+[ext_resource type="PackedScene" uid="uid://b5weund8lkn5y" path="res://TSCN/button.tscn" id="1_t8elw"]
+[ext_resource type="FontFile" uid="uid://dv7fl8vs7uoii" path="res://ASS/fonts/NothingYouCouldDo.ttf" id="2_j6jqn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q7vbl"]
+load_path = "res://.godot/imported/DEFEATED SCREEN.png-d2e21e04076eb554f60e61714f9f8952.ctex"
+
+[node name="Control" type="Control" unique_id=1822618599]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fl5t6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2112291966]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=166843478]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_q7vbl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Start" parent="." unique_id=1382159774 instance=ExtResource("1_t8elw")]
+layout_mode = 0
+offset_left = 1453.0
+offset_top = 919.0
+offset_right = 1803.0
+offset_bottom = 989.0
+theme_override_fonts/font = ExtResource("2_j6jqn")
+text = "Quit Game"

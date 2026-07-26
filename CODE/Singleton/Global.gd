@@ -20,6 +20,8 @@ var from_room : String = ""
 @onready var sanity : int = 100 : 
 	set(value):
 		sanity = value
+		if sanity < 1:
+			change_to_game_over_screen()
 		print("sanity : ", sanity)
 
 @onready var game_on_pause : bool = false
@@ -40,6 +42,11 @@ var from_room : String = ""
 			
 @onready var time_left : Timer
 
+var complete_task := 0:
+	set(value):
+		complete_task = value
+		print("complete tasksss : ", value)
+
 func _ready() -> void:
 	pass
 func _process(delta: float) -> void:
@@ -54,3 +61,5 @@ func pause_game():
 	
 func unpause_game():
 	get_tree().paused = false
+func change_to_game_over_screen():
+	SceneTransition.change_scene("res://TSCN/GameOverScreen.tscn")

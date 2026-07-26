@@ -10,8 +10,10 @@ func _ready() -> void:
 	Start_button.button_down.connect(start_pressed)
 	Start_button.pressed.connect(animate_start)
 	Yes_button.button_up.connect(func():
+		Boolvariable.is_playing_puzzle = false
 		Global.puzzle2_done.emit()
 		)
+	Boolvariable.is_playing_puzzle = true
 	
 func start_pressed():
 	control_10.pops_up()

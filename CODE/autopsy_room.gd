@@ -5,7 +5,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var ran = randi_range(1,4)
+	var ran = randi_range(1,2)
 	if ran == 1 :
 		Boolvariable.aut_ghost = true
 	ghosty.visible = Boolvariable.aut_light

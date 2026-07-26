@@ -16,6 +16,7 @@ class_name Player
 @onready var progress_bar: ProgressBar = $GUI/Control/MarginContainer/HBoxContainer/ProgressBar
 @onready var countdown : RichTextLabel = $GUI/Control/MarginContainer/HBoxContainer/RichTextLabel
 @onready var gui: Control = $GUI/Control
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var ghost_count : int = 0
 
@@ -85,6 +86,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
+				Sfx.change_sound("lamp")
 				Boolvariable.player_flashlisght = !Boolvariable.player_flashlisght
 				point_ligh.enabled = Boolvariable.player_flashlisght
 				$Node2D/PointLight2D.enabled = Boolvariable.player_flashlisght
@@ -92,6 +94,8 @@ func _input(event: InputEvent) -> void:
 				Boolvariable.update_sanity()
 	elif event is InputEventKey:
 		if Input.is_action_just_pressed("ui_cancel") and Global.able_to_pause:
+			Sfx.change_sound("flip")
+			Input.flush_buffered_events()
 			Global.pause_game()
 			pause_layer.visible = true
 
@@ -114,6 +118,7 @@ func update_sanity_timer(hurt : bool):
 	print("ghost : ", hurt)
 
 func on_timer_timeout():
+	animation_player.play("shake")
 	Global.sanity -= 5
 func time_print(minutes, seconds) :
 	countdown.text = "%02d:%02d" % [minutes,seconds]

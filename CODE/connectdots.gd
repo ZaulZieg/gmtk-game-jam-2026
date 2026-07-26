@@ -14,12 +14,14 @@ func _ready() -> void:
 	switch_1.button_down.connect(switch1_on)
 	switch_4.button_down.connect(switch4_on)
 	all_switch = [switch_1,switch_2,switch_3,switch_4]
+	Boolvariable.is_playing_puzzle = true
 	
 func _process(delta: float) -> void:
 	if switch_2.pressed:
 		if all_switch.all(func(sw): return sw.button_pressed):
 			$Label.text = "all switch are on"
 			Global.puzzle_done.emit()
+			Boolvariable.is_playing_puzzle = false
 
 func switch3_on():
 	if switch_1.button_pressed:

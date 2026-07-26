@@ -26,7 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://d35uyeua1y0jh" path="res://ASS/Bubble Text.png" id="23_3kyy1"]
 [ext_resource type="Script" uid="uid://ceg0gahsh0lvy" path="res://CODE/ghostlight.gd" id="25_x0w70"]
 [ext_resource type="PackedScene" uid="uid://ctpyidbce6qui" path="res://TSCN/PauseMenu.tscn" id="26_qnfhv"]
+[ext_resource type="FontFile" uid="uid://dv7fl8vs7uoii" path="res://ASS/fonts/NothingYouCouldDo.ttf" id="27_5bo03"]
 [ext_resource type="PackedScene" uid="uid://dsobrvxv5lodx" path="res://TSCN/todolist.tscn" id="27_edve7"]
+[ext_resource type="FontFile" uid="uid://bpuep0jbqmsdg" path="res://ASS/fonts/digital-7.ttf" id="28_iphe2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -123,8 +125,16 @@ gradient = SubResource("Gradient_2g38p")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("27_5bo03")
+font_size = 47
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf5fn"]
 bg_color = Color(0.2520276, 0.25202766, 0.25202763, 1)
+corner_radius_top_left = 24
+corner_radius_bottom_right = 24
 shadow_color = Color(0, 0, 0, 1)
 shadow_size = 20
 shadow_offset = Vector2(7.675, 8.125)
@@ -133,6 +143,67 @@ shadow_offset = Vector2(7.675, 8.125)
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 22
 corner_radius_bottom_right = 22
+
+[sub_resource type="Animation" id="Animation_iphe2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUI/Control/MarginContainer/HBoxContainer/ProgressBar:offset_transform_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GUI/Control/MarginContainer/HBoxContainer/ProgressBar:offset_transform_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hpbml"]
+resource_name = "shake"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUI/Control/MarginContainer/HBoxContainer/ProgressBar:offset_transform_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10082557, 0.19994222, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.1134464, -0.27925268, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GUI/Control/MarginContainer/HBoxContainer/ProgressBar:offset_transform_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15123835, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.105, 1.105), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3odjf"]
+_data = {
+&"RESET": SubResource("Animation_iphe2"),
+&"shake": SubResource("Animation_hpbml")
+}
 
 [node name="Player" type="CharacterBody2D" unique_id=354476350]
 script = ExtResource("1_30bit")
@@ -232,10 +303,16 @@ theme_override_constants/margin_bottom = 30
 [node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/MarginContainer" unique_id=1141743622]
 layout_mode = 2
 
+[node name="Label" type="Label" parent="GUI/Control/MarginContainer/HBoxContainer" unique_id=2013600563]
+layout_mode = 2
+text = "SANITY "
+label_settings = SubResource("LabelSettings_g4v7s")
+
 [node name="ProgressBar" type="ProgressBar" parent="GUI/Control/MarginContainer/HBoxContainer" unique_id=1107840348]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 1
+offset_transform_enabled = true
 theme_override_styles/background = SubResource("StyleBoxFlat_yf5fn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_57qmd")
 value = 70.08
@@ -244,8 +321,13 @@ show_percentage = false
 [node name="RichTextLabel" type="RichTextLabel" parent="GUI/Control/MarginContainer/HBoxContainer" unique_id=1043131874]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 46
-text = "05:00"
+theme_override_fonts/normal_font = ExtResource("28_iphe2")
+theme_override_font_sizes/normal_font_size = 75
+text = "00:00"
 horizontal_alignment = 2
 
 [node name="CanvasLayer2" parent="." unique_id=1274522397 instance=ExtResource("27_edve7")]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1218236926]
+libraries/ = SubResource("AnimationLibrary_3odjf")

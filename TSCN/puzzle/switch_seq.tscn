@@ -72,3 +72,6 @@ offset_right = 834.0
 offset_bottom = 274.0
 text = "well how it goes"
 label_settings = SubResource("LabelSettings_g4v7s")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=532288338]
+color = Color(0.5330367, 0.5330367, 0.5330367, 1)

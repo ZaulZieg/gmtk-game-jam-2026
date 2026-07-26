@@ -13,7 +13,10 @@ func _ready() -> void:
 		
 		label.connect("play_animation1", play_opening)
 		label.connect("text2_finished", continue_game)
-	
+	MusicManager.play_secure_music()
+	if Global.complete_task == 15:
+		Countdown.timer.stop()
+		SceneTransition.change_scene("res://TSCN/Winning_screen.tscn")
 	
 
 func play_opening():

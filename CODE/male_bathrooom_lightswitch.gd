@@ -12,6 +12,7 @@ func player_in(body):
 func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0 :
 		if Input.is_action_just_pressed("interact"):
+			Sfx.change_sound("lamp")
 			Boolvariable.male_toilet_light = !Boolvariable.male_toilet_light
 			point_light_2d.enabled = Boolvariable.male_toilet_light
 			Boolvariable.update_sanity()

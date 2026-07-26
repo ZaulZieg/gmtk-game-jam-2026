@@ -2,9 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://cdsph04o2yv2b" path="res://ASS/Note Paper UI.png" id="1_gaw2d"]
 [ext_resource type="Script" uid="uid://cqpwoov4ljae1" path="res://CODE/task_note.gd" id="1_yuh8g"]
+[ext_resource type="PackedScene" uid="uid://dsobrvxv5lodx" path="res://TSCN/todolist.tscn" id="3_bu3wq"]
+[ext_resource type="FontFile" uid="uid://dv7fl8vs7uoii" path="res://ASS/fonts/NothingYouCouldDo.ttf" id="4_sc1jd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
 texture = ExtResource("1_gaw2d")
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("4_sc1jd")
+font_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="CanvasLayer" unique_id=1940982640]
 process_mode = 2
@@ -25,3 +31,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=169344948]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 708.0
+offset_top = 96.0
+offset_right = -522.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="CanvasLayer" parent="Panel/MarginContainer" unique_id=1274522397 instance=ExtResource("3_bu3wq")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=1225210925]
+layout_mode = 0
+offset_left = 1177.0
+offset_top = 885.0
+offset_right = 1367.0
+offset_bottom = 912.0
+text = "Click  ESC to Close"
+label_settings = SubResource("LabelSettings_g4v7s")

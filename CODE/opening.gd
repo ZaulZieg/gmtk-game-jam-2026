@@ -9,29 +9,21 @@ var count : int = 0 :
 		if value > 4: value = 0
 		count = value
 var texts1 : Array = [
-		"It all begins that night.....",
-		"the night when i got that job...",
-		"I thought it'll be so easy....",
-		"Never thought it'll be this hard.....",
-		"............"
+		"I hate being in the dark..",
+		"Yet somehow i managed to get myself a job as a night guard....",
+		".........."
 	]
 var text2 : Array = [
-	"This is my first job...",
-	"My night at this place....",
-	"as a security..",
-	"of a morgue nonetheless....",
-	"Nice pick of the first job me!.....",
+	"I heard that this place is scary at night but i never imagine it would be this scary..",
+	"Im all alone with nothing but a flashlight and that damn to do list",
+	"they said this job is supposed to be easy...",
+	"all i gotta do is turn off any source of light in other room",
+	"but they didn't mention about those things that would drive me insane if i keep looking at them",
 	".......",
-	"okay, let's see.....",
-	"the manager said it's an easy job....",
-	"just do the task they gave me....",
-	"and then just stay in the security room for the rest of the night....",
-	"pretty easy....",
-	"but a weird note after....",
-	"\"if you see something weird, just don't look at it, easy....\"",
-	"easy, but ominous note.....",
-	"........whatever then, let's just do the job",
-	"he left the task list on the table....",
+	"on top of that i need to finish before midnight or they will swarm me and drive me insane",
+	"why can't people before me do these stuff",
+	"well...it's almost midnight...",
+	"better get to it",
 	".............."
 ]
 var picss : Array[String] = [
@@ -68,7 +60,7 @@ func show_dialogues(which):
 		play_animation1.emit()
 	elif which == text2:
 		close_dialogue()
-		Countdown.start_timer(5)
+		Countdown.start_timer(3.5)
 
 func type_text(tex):
 	typing =  true

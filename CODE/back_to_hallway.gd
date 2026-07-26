@@ -9,5 +9,6 @@ func player_in(body):
 func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0 :
 		if Input.is_action_just_pressed("interact"):
+			Sfx.change_sound("door")
 			Global.from_room = "Male_bathroom"
 			SceneTransition.change_scene("res://TSCN/maps/Hallway.tscn")

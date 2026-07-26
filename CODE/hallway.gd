@@ -6,7 +6,9 @@ var timer = Timer
 
 
 func _ready() -> void:
-	var rand = randi_range(1,2)
+	var rand = randi_range(1,3)
+	
+	MusicManager.play_hall_music()
 	
 	if rand == 2:
 		$Area2D.visible = true

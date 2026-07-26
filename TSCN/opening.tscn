@@ -59,19 +59,21 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1295093384]
+custom_minimum_size = Vector2(1200, 200)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "this is the dialogue that are in the first of the game"
 label_settings = SubResource("LabelSettings_g4v7s")
+autowrap_mode = 2
 script = ExtResource("1_xcg4s")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=277158718]
 visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 offset_transform_enabled = true
-offset_transform_position_ratio = Vector2(0, -0.17)
+offset_transform_position_ratio = Vector2(0.875, -0.17)
 offset_transform_scale = Vector2(3, 3)
 texture = ExtResource("2_vvf3n")
 expand_mode = 1

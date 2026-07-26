@@ -17,6 +17,7 @@ func Player_exiting(body):
 func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0:
 		if Input.is_action_just_pressed("interact"):
+			Sfx.change_sound("flip")
 			Global.able_to_pause = false
 			Global.pause_game()
 			spawn_qn()
@@ -24,5 +25,8 @@ func _input(event: InputEvent) -> void:
 func spawn_qn():
 	var node = preload("res://TSCN/Task Note.tscn")
 	var inst = node.instantiate()
+	inst.visible = false
 	get_parent().add_child(inst)
+	await get_tree().create_timer(1).timeout
+	inst.visible = true
 	

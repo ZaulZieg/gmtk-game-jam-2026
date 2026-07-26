@@ -8,6 +8,7 @@ func _ready() -> void:
 	quitb.button_up.connect(quit_game)
 
 func resume_game() -> void :
+	print("game resumed")
 	Global.unpause_game()
 	get_parent().visible = false
 	

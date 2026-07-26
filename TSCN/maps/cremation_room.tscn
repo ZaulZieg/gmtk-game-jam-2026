@@ -100,9 +100,9 @@ offset_bottom = 1114.0
 color = Color(0, 0, 0, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="light" unique_id=1602564184]
-position = Vector2(1051.8206, 472.0001)
+position = Vector2(1051.8206, 520.6458)
 rotation = 1.5707964
-scale = Vector2(3.7109377, 973.6411)
+scale = Vector2(4.0909824, 973.6411)
 texture = SubResource("GradientTexture1D_yf5fn")
 
 [node name="Ghosty" type="Area2D" parent="." unique_id=598816032]

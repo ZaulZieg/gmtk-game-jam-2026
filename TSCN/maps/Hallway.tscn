@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="7_rqctw"]
 [ext_resource type="Script" uid="uid://b7bxwflqk44ku" path="res://CODE/backtosecure.gd" id="9_48q48"]
 [ext_resource type="Script" uid="uid://qpj53dh05h68" path="res://CODE/lamp_switch_2.gd" id="10_1clhh"]
-[ext_resource type="Texture2D" uid="uid://cvjmy5e365jjm" path="res://icon.svg" id="11_jnpad"]
 [ext_resource type="PackedScene" uid="uid://bupbdguvgeaf5" path="res://TSCN/point_light_2d.tscn" id="12_k1w7o"]
 [ext_resource type="Script" uid="uid://csatv8sxi033g" path="res://CODE/lampswitchhall.gd" id="12_mqdtk"]
 [ext_resource type="Texture2D" uid="uid://berlky4iu124k" path="res://ASS/Switch on.png" id="13_q6tf1"]
@@ -20,6 +19,7 @@
 [ext_resource type="Script" uid="uid://02w1qtu5u47n" path="res://CODE/to_coffinroom.gd" id="16_q0b5l"]
 [ext_resource type="Script" uid="uid://c1fhtfvk1f440" path="res://CODE/to_male_toilet.gd" id="17_c3a61"]
 [ext_resource type="Script" uid="uid://cqldhlkkb0s2y" path="res://CODE/to_female_toilet.gd" id="18_yx8as"]
+[ext_resource type="Texture2D" uid="uid://ctljlug1kyov0" path="res://ASS/ghost sprite/Group 4.PNG" id="20_yx8as"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(1491, 249.64684)
@@ -246,11 +246,12 @@ shape = SubResource("RectangleShape2D_5s0fj")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2098880334]
 visible = false
+position = Vector2(-730, -214)
 script = ExtResource("15_1clhh")
 
 [node name="ghost" type="Sprite2D" parent="Area2D" unique_id=1913941503]
 position = Vector2(990, 700)
-texture = ExtResource("11_jnpad")
+texture = ExtResource("20_yx8as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=344933020]
 position = Vector2(989.738, 700.20087)

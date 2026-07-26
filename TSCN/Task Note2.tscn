@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://qq8vm7dvhldi"]
+
+[ext_resource type="Texture2D" uid="uid://cdsph04o2yv2b" path="res://ASS/Note Paper UI.png" id="2_thtjs"]
+[ext_resource type="PackedScene" uid="uid://dsobrvxv5lodx" path="res://TSCN/todolist.tscn" id="3_6yrh5"]
+[ext_resource type="FontFile" uid="uid://dv7fl8vs7uoii" path="res://ASS/fonts/NothingYouCouldDo.ttf" id="3_iyq1b"]
+
+[sub_resource type="GDScript" id="GDScript_5ykbg"]
+script/source = "extends Control
+#
+#
+#func _input(event: InputEvent) -> void:
+	#if event and get_tree().paused:
+		#await get_tree().create_timer(0.5).timeout
+		#if Input.is_action_just_pressed(\"ui_cancel\") or Input.is_anything_pressed():
+			#Global.unpause_game()
+			#Global.note_closed()
+			#call_deferred(\"queue_free\")
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("3_iyq1b")
+font_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" unique_id=1576693091]
+process_mode = 2
+custom_minimum_size = Vector2(978, 1073)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -942.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_5ykbg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1401343002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Container" type="Control" parent="." unique_id=393490033]
+custom_minimum_size = Vector2(918, 1073)
+clip_contents = true
+anchors_preset = 0
+offset_right = 918.0
+offset_bottom = 1073.0
+
+[node name="TextureRect" type="TextureRect" parent="Container" unique_id=2010382706]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -733.0
+offset_right = 368.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_thtjs")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Container" unique_id=169344948]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="CanvasLayer" parent="Container/MarginContainer" unique_id=1274522397 instance=ExtResource("3_6yrh5")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Container" unique_id=1281747137]
+custom_minimum_size = Vector2(413, 128)
+layout_mode = 0
+offset_left = 389.0
+offset_top = 892.0
+offset_right = 802.0
+offset_bottom = 1020.0
+text = "Left Mouse Click to Turn ON the FLASHLIGHT"
+label_settings = SubResource("LabelSettings_g4v7s")
+autowrap_mode = 2

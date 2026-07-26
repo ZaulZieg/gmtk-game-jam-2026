@@ -3,11 +3,14 @@ extends Node
 signal change_update
 
 @onready var opening_dialog : bool = false
+
 @onready var hallway1_light_left : bool = true
 @onready var hallway1_light_right : bool = true
 @onready var hallway2_light_left : bool = true
 @onready var hallway2_light_right : bool = true
 @onready var player_flashlisght : bool = false
+
+var is_playing_puzzle : bool = false
 
 #DOCUMENT ROOM
 var doc_room_pc1 : bool = true

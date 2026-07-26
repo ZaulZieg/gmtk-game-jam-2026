@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://b8evd48rxu1nn"]
+
+[ext_resource type="Script" uid="uid://s34hi8sgccb6" path="res://control.gd" id="1_gfpvl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gfpvl"]
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" unique_id=512790579]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gfpvl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=327779145]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=204980345]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 476.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 150
+
+[node name="Control" type="Control" parent="Margin" unique_id=624269524]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Margin/Control" unique_id=865292732]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Margin/Control/ColorRect" unique_id=600335806]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="Margin/Control/ColorRect/MarginContainer" unique_id=564501946]
+layout_mode = 2
+size_flags_vertical = 1
+text = "test"
+label_settings = SubResource("LabelSettings_gfpvl")

@@ -94,6 +94,8 @@ func player_out(body):
 		
 func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0:
+		if Boolvariable.is_playing_puzzle:
+			return
 		if event.is_action_pressed(\"interact\"):
 			if !already_played:
 				play_game()
@@ -145,6 +147,7 @@ func player_out(body):
 func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0:
 		if event.is_action_pressed(\"interact\"):
+			Sfx.change_sound(\"lamp\")
 			Boolvariable.doc_room_pc3 = !Boolvariable.doc_room_pc3
 			await get_tree().process_frame
 			pc_3.enabled = Boolvariable.doc_room_pc3
@@ -173,6 +176,7 @@ func player_out(body):
 func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0:
 		if event.is_action_pressed(\"interact\"):
+			Sfx.change_sound(\"lamp\")
 			Boolvariable.doc_room_light = !Boolvariable.doc_room_light
 			await get_tree().process_frame
 			main_light.enabled = Boolvariable.doc_room_light

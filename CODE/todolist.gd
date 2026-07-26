@@ -1,8 +1,11 @@
 extends Control
-@onready var timer: Timer = $"../Timer"
+
+@onready var timer: Timer = $Timer
 @onready var label: RichTextLabel = $HBoxContainer/RichTextLabel
 @onready var todo_list : Array = []
 @onready var lists : Array = []
+
+var complete_task : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +23,10 @@ func _ready() -> void:
 		"Coffin Room Light",
 		"Male Toilet Light",
 		"Female Toilet Light",
-		
+		"Cremation Room Light",
+		"Autopsy Room Light",
+		"Front Office Light",
+		"Front Office Computer"
 	]
 
 
@@ -29,6 +35,7 @@ func _process(delta: float) -> void:
 	pass
 
 func refresh():
+	complete_task = 0
 	label.text = ''
 	todo_list = [
 		Boolvariable.hallway1_light_left,
@@ -48,5 +55,10 @@ func refresh():
 		Boolvariable.fo_pc
 	]
 	for i in todo_list.size():
-		label.append_text("[s]" + str(list) + "[s]\n")
-	
+		
+		if todo_list[i]:
+			label.append_text(lists[i] + "\n")
+		else:
+			label.append_text("[s] %s [/s]\n" %lists[i])
+			complete_task += 1
+	Global.complete_task = complete_task

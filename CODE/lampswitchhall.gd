@@ -26,7 +26,7 @@ func player_exited(body):
 func _input(event: InputEvent) -> void:
 	if event and detect.size() > 0:
 		if Input.is_action_just_pressed("interact"):
-			
+			Sfx.change_sound("lamp")
 			Boolvariable.hallway1_light_left = !Boolvariable.hallway1_light_left
 			await get_tree().process_frame
 			point_light_2d.enabled = Boolvariable.hallway1_light_left
