@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bw8p8jchwh37k" path="res://ASS/fo/fo/dirty layer.PNG" id="7_47jpy"]
 [ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="8_ml5oq"]
 [ext_resource type="Script" uid="uid://6rqafh04fca8" path="res://CODE/from_fo_to_hallway_2.gd" id="9_101s7"]
+[ext_resource type="Script" uid="uid://b3oi8myl3usya" path="res://CODE/fo_lightswitch.gd" id="10_t61yh"]
+[ext_resource type="Script" uid="uid://5kfp6ik3wo0k" path="res://CODE/Ghost.gd" id="11_3g0ja"]
+[ext_resource type="Texture2D" uid="uid://c1uxfjug03ske" path="res://ASS/ghost sprite/Group 5.PNG" id="12_3g0ja"]
+[ext_resource type="Script" uid="uid://dgagy5gmef1xb" path="res://TSCN/maps/fo_pc.gd" id="13_3g0ja"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 39.387177
@@ -16,7 +20,37 @@ radius = 39.387177
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(150, 80.35895)
 
-[node name="Node2D" type="Node2D" unique_id=1872468567]
+[sub_resource type="Gradient" id="Gradient_101s7"]
+offsets = PackedFloat32Array(0, 0.5726744, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.3226744, 0.3226744, 0.3226744, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
+gradient = SubResource("Gradient_101s7")
+fill = 1
+fill_from = Vector2(0.50641024, 0)
+fill_to = Vector2(0.38675213, 0.5405983)
+
+[sub_resource type="Gradient" id="Gradient_flqbi"]
+offsets = PackedFloat32Array(0.02616279, 0.47965115, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.3226744, 0.3226744, 0.3226744, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf5fn"]
+gradient = SubResource("Gradient_flqbi")
+fill = 2
+fill_from = Vector2(0.44230768, 0.44230768)
+fill_to = Vector2(0.4764957, 0.6730769)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(59, 31)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 42.0
+height = 200.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(111.00003, 76)
+
+[node name="FO" type="Node2D" unique_id=1872468567]
 
 [node name="PaintLayer3" type="Sprite2D" parent="." unique_id=1000420738]
 position = Vector2(1116, 532)
@@ -79,3 +113,59 @@ script = ExtResource("9_101s7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="to_hallway_2" unique_id=782701504]
 position = Vector2(961, 509.17947)
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="light" type="Node2D" parent="." unique_id=963720786]
+
+[node name="PointLight2D" type="PointLight2D" parent="light" unique_id=2072548503]
+position = Vector2(959.99994, 853)
+scale = Vector2(35.65625, 37.92188)
+texture = SubResource("GradientTexture2D_g4v7s")
+
+[node name="ColorRect" type="ColorRect" parent="light" unique_id=1317082093]
+z_index = -1
+offset_right = 1989.0
+offset_bottom = 1112.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="light" unique_id=54996028]
+color = Color(0, 0, 0, 1)
+
+[node name="PointLight2D2" type="PointLight2D" parent="light" unique_id=1126641168]
+position = Vector2(1251.9999, 407.99994)
+rotation = -0.6021386
+scale = Vector2(5.634704, 4.105417)
+skew = 0.42760566
+texture = SubResource("GradientTexture2D_yf5fn")
+
+[node name="lightswitch" type="Area2D" parent="." unique_id=1529626293]
+script = ExtResource("10_t61yh")
+metadata/_custom_type_script = "uid://c724syj76nj0q"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lightswitch" unique_id=44997925]
+position = Vector2(1123.5, 468.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="Ghosty" type="Area2D" parent="." unique_id=398840914]
+position = Vector2(3, 68)
+script = ExtResource("11_3g0ja")
+metadata/_custom_type_script = "uid://5kfp6ik3wo0k"
+
+[node name="Group5" type="Sprite2D" parent="Ghosty" unique_id=907768250]
+position = Vector2(1121, 640)
+texture = ExtResource("12_3g0ja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ghosty" unique_id=1784991099]
+position = Vector2(1121, 640)
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="fo_pc" type="Area2D" parent="." unique_id=2114221807]
+script = ExtResource("13_3g0ja")
+metadata/_custom_type_script = "uid://c724syj76nj0q"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fo_pc" unique_id=218709919]
+position = Vector2(1316.5, 578)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="puzzle" type="CanvasLayer" parent="." unique_id=19643147]
+
+[editable path="Player"]

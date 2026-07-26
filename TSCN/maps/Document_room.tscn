@@ -76,9 +76,11 @@ var already_played : bool = false
 
 func _ready() -> void:
 	pc_2.enabled = Boolvariable.doc_room_pc2
+	if !Boolvariable.doc_room_pc2:
+		already_played = true
 	body_entered.connect(player_in)
 	body_exited.connect(player_out)
-	Global.puzzle_done.connect(puzzle_done)
+	Global.puzzle2_done.connect(puzzle_done)
 
 func player_in(body):
 	if body is Player:

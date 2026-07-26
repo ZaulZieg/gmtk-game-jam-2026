@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://6ei43t400ql7"]
 
 [ext_resource type="Texture2D" uid="uid://c8x64yct37bcd" path="res://ASS/cremaion room/Paint Layer 1.PNG" id="1_33wt0"]
+[ext_resource type="Script" uid="uid://bokldwl16klay" path="res://CODE/cremation_room.gd" id="1_hqjf6"]
 [ext_resource type="Texture2D" uid="uid://y7feuuyd7bca" path="res://ASS/cremaion room/bed tray 2.PNG" id="2_kmn54"]
 [ext_resource type="Texture2D" uid="uid://dlxbhm4xlotj5" path="res://ASS/cremaion room/chair.PNG" id="3_qt8kc"]
 [ext_resource type="Texture2D" uid="uid://dcep4c72bc14t" path="res://ASS/cremaion room/clor.PNG" id="4_hqjf6"]
@@ -9,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="7_s7j5b"]
 [ext_resource type="Script" uid="uid://ccji0qemdi4jb" path="res://CODE/from_cremation_to_hallway_2.gd" id="8_kmn54"]
 [ext_resource type="Script" uid="uid://dlet7iedeyhwe" path="res://CODE/cremation_room_lightswithc.gd" id="9_qt8kc"]
+[ext_resource type="Script" uid="uid://5kfp6ik3wo0k" path="res://CODE/Ghost.gd" id="11_g1pgq"]
+[ext_resource type="Texture2D" uid="uid://dbfx3xxwt47gg" path="res://ASS/Paint Layer 4 Merged.PNG" id="12_s7j5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(217.00003, 77)
@@ -16,7 +19,17 @@ size = Vector2(217.00003, 77)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(153.60217, 68.02173)
 
+[sub_resource type="Gradient" id="Gradient_qt8kc"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yf5fn"]
+gradient = SubResource("Gradient_qt8kc")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf5fn"]
+radius = 46.356934
+height = 518.8939
+
 [node name="Cremation_room" type="Node2D" unique_id=1495892090]
+script = ExtResource("1_hqjf6")
 
 [node name="PaintLayer1" type="Sprite2D" parent="." unique_id=966112620]
 position = Vector2(1294, 611)
@@ -74,5 +87,36 @@ script = ExtResource("9_qt8kc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lightswithc" unique_id=928654563]
 position = Vector2(889, 304)
 shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="light" type="Node2D" parent="." unique_id=260312722]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="light" unique_id=1007868448]
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="light" unique_id=363479934]
+z_index = -1
+offset_right = 1950.0
+offset_bottom = 1114.0
+color = Color(0, 0, 0, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="light" unique_id=1602564184]
+position = Vector2(1051.8206, 472.0001)
+rotation = 1.5707964
+scale = Vector2(3.7109377, 973.6411)
+texture = SubResource("GradientTexture1D_yf5fn")
+
+[node name="Ghosty" type="Area2D" parent="." unique_id=598816032]
+visible = false
+script = ExtResource("11_g1pgq")
+metadata/_custom_type_script = "uid://5kfp6ik3wo0k"
+
+[node name="PaintLayer4Merged" type="Sprite2D" parent="Ghosty" unique_id=1687407064]
+position = Vector2(1059, 105.74999)
+scale = Vector2(1, 0.7580386)
+texture = ExtResource("12_s7j5b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ghosty" unique_id=1865406414]
+position = Vector2(1057, 72)
+shape = SubResource("CapsuleShape2D_yf5fn")
 
 [editable path="Player"]

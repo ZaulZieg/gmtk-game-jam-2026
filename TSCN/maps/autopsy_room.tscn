@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://bhfk7uhbgfawl"]
 
 [ext_resource type="Texture2D" uid="uid://2dajjuiwugbu" path="res://ASS/Autopsy room/Group 3.PNG" id="1_2wmgm"]
+[ext_resource type="Script" uid="uid://bdil0nnlpncl6" path="res://CODE/autopsy_room.gd" id="1_gxc4c"]
 [ext_resource type="Texture2D" uid="uid://dmnud2u8mj4qm" path="res://ASS/Autopsy room/bed tray 1.PNG" id="2_gprge"]
 [ext_resource type="Texture2D" uid="uid://d1uk4bkn0sgnq" path="res://ASS/Autopsy room/bed tray 2.PNG" id="3_0hwoy"]
 [ext_resource type="Texture2D" uid="uid://dyir7smwi85cl" path="res://ASS/Autopsy room/dirt layer.PNG" id="4_677kc"]
 [ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="5_7wm23"]
 [ext_resource type="Script" uid="uid://b4jrgf5lre34d" path="res://CODE/fromcre_to_hallway_2.gd" id="6_gprge"]
 [ext_resource type="Script" uid="uid://n51r7gqjxu4c" path="res://CODE/autopsy_lightswitch.gd" id="7_0hwoy"]
+[ext_resource type="Script" uid="uid://5kfp6ik3wo0k" path="res://CODE/Ghost.gd" id="8_7wm23"]
+[ext_resource type="Texture2D" uid="uid://ctljlug1kyov0" path="res://ASS/ghost sprite/Group 4.PNG" id="9_gxc4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(124, 267)
@@ -20,7 +23,22 @@ size = Vector2(306.00003, 106.99997)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
 size = Vector2(59.884766, 104)
 
+[sub_resource type="Gradient" id="Gradient_0hwoy"]
+offsets = PackedFloat32Array(0, 0.47965115, 0.997093, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.33514988, 0.33514988, 0.33514988, 1, 0.037790716, 0.037790716, 0.037790716, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_677kc"]
+gradient = SubResource("Gradient_0hwoy")
+fill = 2
+fill_from = Vector2(0.5106838, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 41.0
+height = 200.0
+
 [node name="Autopsy_room" type="Node2D" unique_id=327663842]
+script = ExtResource("1_gxc4c")
 
 [node name="Group3" type="Sprite2D" parent="." unique_id=1692491298]
 position = Vector2(966, 541)
@@ -74,5 +92,35 @@ script = ExtResource("7_0hwoy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lightswitch" unique_id=614684122]
 position = Vector2(1278.0576, 507)
 shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="light" type="Node2D" parent="." unique_id=355848657]
+
+[node name="PointLight2D" type="PointLight2D" parent="light" unique_id=156177341]
+position = Vector2(902.5, 602.038)
+scale = Vector2(15.046875, 18.62619)
+energy = 0.7
+texture = SubResource("GradientTexture2D_677kc")
+
+[node name="ColorRect" type="ColorRect" parent="light" unique_id=1282687251]
+z_index = -1
+offset_right = 2148.0
+offset_bottom = 1233.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="light" unique_id=1146053305]
+color = Color(0, 0, 0, 1)
+
+[node name="Ghosty" type="Area2D" parent="." unique_id=617213626]
+visible = false
+script = ExtResource("8_7wm23")
+metadata/_custom_type_script = "uid://5kfp6ik3wo0k"
+
+[node name="Group4" type="Sprite2D" parent="Ghosty" unique_id=1793925298]
+position = Vector2(1259, 833)
+texture = ExtResource("9_gxc4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ghosty" unique_id=1720418985]
+position = Vector2(1257, 833)
+shape = SubResource("CapsuleShape2D_g4v7s")
 
 [editable path="Player"]
