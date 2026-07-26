@@ -19,6 +19,19 @@ func _ready() -> void:
 		"Hallway_2":
 			player.position = $Markers/from_hallway_2.global_position
 			player.anim.animation = "walk_left"
+		"Male_bathroom":
+			player.position = $Markers/from_male_toilet.global_position
+			player.anim.animation = "walk_down"
+		"Female_bathroom":
+			player.position = $Markers/from_female_toilet.global_position
+			player.anim.animation = "walk_down"
+		"Coffin_room":
+			player.position = $Markers/from_coffin_room.global_position
+			player.anim.animation = "walk_down"
+		"Document_room":
+			player.position = $Markers/from_document_room.global_position
+			player.anim.animation = "walk_left"
+			player.anim.flip_h = true
 
 func _process(delta: float) -> void:
 	pass

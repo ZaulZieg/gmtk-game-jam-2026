@@ -40,6 +40,7 @@ func _ready() -> void:
 	$Node2D/Area2D/CollisionPolygon2D.disabled = !Boolvariable.player_flashlisght
 	
 	Global.player_in_room = get_parent().name
+	print(Global.player_in_room, " | ", Global.from_room)
 	
 	Boolvariable.change_update.connect(update_sanity_timer)
 	Countdown.time_changed.connect(time_print)

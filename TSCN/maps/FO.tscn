@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://druwtwa121gni"]
+
+[ext_resource type="Texture2D" uid="uid://bwwhvtu8a8jbg" path="res://ASS/fo/fo/Paint Layer 3.PNG" id="1_5xju5"]
+[ext_resource type="Texture2D" uid="uid://bdyw27muic3da" path="res://ASS/fo/fo/chair.PNG" id="2_101s7"]
+[ext_resource type="Texture2D" uid="uid://bua0qd16dm2m7" path="res://ASS/fo/fo/Copy of chair.PNG" id="3_t61yh"]
+[ext_resource type="Texture2D" uid="uid://f6rlmyomtdql" path="res://ASS/fo/fo/Copy of open door (security room).PNG" id="4_j62xw"]
+[ext_resource type="Texture2D" uid="uid://bhnxjnpgfwcit" path="res://ASS/fo/fo/cussion.PNG" id="5_flqbi"]
+[ext_resource type="Texture2D" uid="uid://wvmlcr6kl6gq" path="res://ASS/fo/fo/desk.PNG" id="6_3g0ja"]
+[ext_resource type="Texture2D" uid="uid://bw8p8jchwh37k" path="res://ASS/fo/fo/dirty layer.PNG" id="7_47jpy"]
+[ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="8_ml5oq"]
+[ext_resource type="Script" uid="uid://6rqafh04fca8" path="res://CODE/from_fo_to_hallway_2.gd" id="9_101s7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 39.387177
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(150, 80.35895)
+
+[node name="Node2D" type="Node2D" unique_id=1872468567]
+
+[node name="PaintLayer3" type="Sprite2D" parent="." unique_id=1000420738]
+position = Vector2(1116, 532)
+texture = ExtResource("1_5xju5")
+
+[node name="Chair" type="Sprite2D" parent="." unique_id=1702973184]
+position = Vector2(1116, 532)
+texture = ExtResource("2_101s7")
+
+[node name="CopyOfChair" type="Sprite2D" parent="." unique_id=1745020503]
+position = Vector2(980, 663)
+texture = ExtResource("3_t61yh")
+
+[node name="CopyOfChair2" type="Sprite2D" parent="." unique_id=14925900]
+position = Vector2(984, 540)
+texture = ExtResource("3_t61yh")
+
+[node name="CopyOfChair3" type="Sprite2D" parent="." unique_id=1942717707]
+position = Vector2(1134, 522)
+texture = ExtResource("3_t61yh")
+
+[node name="CopyOfChair4" type="Sprite2D" parent="." unique_id=407075099]
+position = Vector2(1134, 658)
+texture = ExtResource("3_t61yh")
+
+[node name="CopyOfOpenDoor(securityRoom)" type="Sprite2D" parent="." unique_id=2125254983]
+position = Vector2(1116, 532)
+texture = ExtResource("4_j62xw")
+
+[node name="Cussion" type="Sprite2D" parent="." unique_id=2131783535]
+position = Vector2(1116, 532)
+texture = ExtResource("5_flqbi")
+
+[node name="Desk" type="Sprite2D" parent="." unique_id=1435071695]
+position = Vector2(1116, 532)
+texture = ExtResource("6_3g0ja")
+
+[node name="DirtyLayer" type="Sprite2D" parent="." unique_id=579820711]
+position = Vector2(1116, 532)
+texture = ExtResource("7_47jpy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=800745057]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=931662438]
+polygon = PackedVector2Array(806, 465, 810, 906, 837, 980, 1096, 980, 1106, 892, 1480, 892, 1476, 744, 1476, 448, 1084, 459, 1008, 493, 921, 496, 798, 442, 498, 448, 513, 68, 1638, 85, 1651, 1075, 420, 1077, 461, 428)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1166971900]
+position = Vector2(1381, 726)
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1299610163]
+polygon = PackedVector2Array(1273, 545, 1347, 553, 1353, 699, 1486, 701, 1496, 475, 1470, 341, 1168, 335, 1168, 674, 1254, 674)
+
+[node name="Player" parent="." unique_id=354476350 instance=ExtResource("8_ml5oq")]
+position = Vector2(960, 515)
+
+[node name="to_hallway_2" type="Area2D" parent="." unique_id=1977509070]
+script = ExtResource("9_101s7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="to_hallway_2" unique_id=782701504]
+position = Vector2(961, 509.17947)
+shape = SubResource("RectangleShape2D_g4v7s")

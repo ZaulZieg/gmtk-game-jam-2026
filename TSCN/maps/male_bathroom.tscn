@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://nkxou3kfm67w"]
+
+[ext_resource type="Script" uid="uid://cidbykssvw5ul" path="res://CODE/male_bathroom.gd" id="1_01f7e"]
+[ext_resource type="Texture2D" uid="uid://cvsn6jxajp6jj" path="res://ASS/ladies room/ladies room/color.PNG" id="1_luact"]
+[ext_resource type="Texture2D" uid="uid://d4564qn3u745" path="res://ASS/ladies room/ladies room/dirt detail.PNG" id="2_reebu"]
+[ext_resource type="Texture2D" uid="uid://d1hf1vq4b18vm" path="res://ASS/ladies room/ladies room/outline.PNG" id="3_m3grj"]
+[ext_resource type="Texture2D" uid="uid://b2dxfi66ueisj" path="res://ASS/ladies room/ladies room/Paint Layer 1.PNG" id="4_m15d1"]
+[ext_resource type="Texture2D" uid="uid://dqnshgkt4wvvm" path="res://ASS/ladies room/ladies room/water flow.PNG" id="5_esklo"]
+[ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="6_01f7e"]
+[ext_resource type="Script" uid="uid://cw3pbscgawydp" path="res://CODE/back_to_hallway.gd" id="7_reebu"]
+[ext_resource type="Script" uid="uid://bmxkg3n5x6ap4" path="res://CODE/male_bathrooom_lightswitch.gd" id="8_m3grj"]
+[ext_resource type="Script" uid="uid://geb3vca4is5f" path="res://CODE/bathroomghost.gd" id="9_esklo"]
+[ext_resource type="Texture2D" uid="uid://4dek5nrcdn3x" path="res://ASS/ghost sprite/Group 7.PNG" id="10_01f7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reebu"]
+size = Vector2(165.31885, 60.81183)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(98.00003, 50)
+
+[sub_resource type="Gradient" id="Gradient_m3grj"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g4v7s"]
+gradient = SubResource("Gradient_m3grj")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 41.0
+height = 190.0
+
+[node name="Male_bathroom" type="Node2D" unique_id=1604214905]
+script = ExtResource("1_01f7e")
+
+[node name="Color" type="Sprite2D" parent="." unique_id=1029277770]
+position = Vector2(1077, 589)
+texture = ExtResource("1_luact")
+
+[node name="Outline" type="Sprite2D" parent="." unique_id=859330015]
+position = Vector2(1077, 589)
+texture = ExtResource("3_m3grj")
+
+[node name="PaintLayer1" type="Sprite2D" parent="." unique_id=777782989]
+position = Vector2(1077, 589)
+texture = ExtResource("4_m15d1")
+
+[node name="WaterFlow" type="Sprite2D" parent="." unique_id=1096803072]
+position = Vector2(1081, 719)
+texture = ExtResource("5_esklo")
+
+[node name="DirtDetail" type="Sprite2D" parent="." unique_id=2002193207]
+position = Vector2(1077, 589)
+texture = ExtResource("2_reebu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1267995336]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1795766503]
+polygon = PackedVector2Array(566, 417, 1130, 412, 1137, 819, 1020, 825, 1015, 910, 865, 916, 865, 825, 804, 827, 783, 406, 494, 421, 506, 1062, 1547, 1025, 1430, 28, 442, 53, 407, 392)
+
+[node name="Player" parent="." unique_id=354476350 instance=ExtResource("6_01f7e")]
+position = Vector2(943, 871)
+
+[node name="AnimatedSprite2D" parent="Player" index="2" unique_id=1885471595]
+animation = &"walk_up"
+
+[node name="interactable" type="Node2D" parent="." unique_id=18700825]
+
+[node name="back_to_hallway" type="Area2D" parent="interactable" unique_id=1775431026]
+script = ExtResource("7_reebu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable/back_to_hallway" unique_id=1554881196]
+position = Vector2(944, 885)
+shape = SubResource("RectangleShape2D_reebu")
+
+[node name="lightswitch" type="Area2D" parent="interactable" unique_id=1659114516]
+script = ExtResource("8_m3grj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable/lightswitch" unique_id=1258990743]
+position = Vector2(1108, 424)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="light" type="Node2D" parent="." unique_id=1855191280]
+
+[node name="PointLight2D" type="PointLight2D" parent="light" unique_id=1431686342]
+position = Vector2(912.99994, 422)
+rotation = 1.5707964
+scale = Vector2(4.01319, 1027.5)
+texture = SubResource("GradientTexture1D_g4v7s")
+
+[node name="ColorRect" type="ColorRect" parent="light" unique_id=454774320]
+z_index = -1
+offset_left = -4.0
+offset_right = 2227.0
+offset_bottom = 1244.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="light" unique_id=1109727188]
+color = Color(0, 0, 0, 1)
+
+[node name="ghost" type="Area2D" parent="." unique_id=2058832312]
+position = Vector2(-22, -123)
+script = ExtResource("9_esklo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ghost" unique_id=1413146832]
+position = Vector2(831, 492)
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="Group9" type="Sprite2D" parent="ghost" unique_id=1422864516]
+position = Vector2(840, 495)
+texture = ExtResource("10_01f7e")
+
+[editable path="Player"]

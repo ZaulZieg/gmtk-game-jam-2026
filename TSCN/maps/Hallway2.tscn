@@ -6,9 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://ck72ioqvq2p3l" path="res://ASS/Hallway 2/open door (security room).PNG" id="3_ufrd8"]
 [ext_resource type="Texture2D" uid="uid://b5cquw034ihmc" path="res://ASS/Hallway 2/dirt layer.PNG" id="4_vin28"]
 [ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="5_0rjd2"]
+[ext_resource type="Script" uid="uid://bbg5p1oronni" path="res://CODE/to_cremation_room.gd" id="7_jyv6l"]
 [ext_resource type="Script" uid="uid://ckjlde2pd73ex" path="res://TSCN/maps/back_to_hallway_1.gd" id="7_vin28"]
+[ext_resource type="Script" uid="uid://dsjys3xrg3d25" path="res://CODE/to_autopsy_room.gd" id="8_aufoy"]
 [ext_resource type="PackedScene" uid="uid://bupbdguvgeaf5" path="res://TSCN/point_light_2d.tscn" id="8_vin28"]
 [ext_resource type="Script" uid="uid://bety3g6k7hr55" path="res://CODE/hallway _1_light_switch_left.gd" id="9_0rjd2"]
+[ext_resource type="Script" uid="uid://bqwngq8u2on6g" path="res://CODE/to_fo.gd" id="9_2w8pj"]
 [ext_resource type="Script" uid="uid://cct4wia5s1qcj" path="res://CODE/hallway2_right_light_switch.gd" id="10_qsy4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
@@ -46,6 +49,15 @@ size = Vector2(41, 315)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(60, 182)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
+size = Vector2(151, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eivn1"]
+size = Vector2(298.5, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjeod"]
+size = Vector2(298.5, 109)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
 size = Vector2(127, 41)
@@ -130,6 +142,27 @@ script = ExtResource("7_vin28")
 position = Vector2(-42.659576, -15.095459)
 shape = SubResource("RectangleShape2D_yf5fn")
 
+[node name="to_cremation_room" type="Area2D" parent="portal" unique_id=621487276]
+script = ExtResource("7_jyv6l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal/to_cremation_room" unique_id=1361423532]
+position = Vector2(422.5, 486)
+shape = SubResource("RectangleShape2D_fcnqv")
+
+[node name="to_autopsy_room" type="Area2D" parent="portal" unique_id=992163298]
+script = ExtResource("8_aufoy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal/to_autopsy_room" unique_id=1009414328]
+position = Vector2(1497.75, 489)
+shape = SubResource("RectangleShape2D_eivn1")
+
+[node name="to_fo" type="Area2D" parent="portal" unique_id=1765430955]
+script = ExtResource("9_2w8pj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal/to_fo" unique_id=1282708525]
+position = Vector2(919, 884.5)
+shape = SubResource("RectangleShape2D_sjeod")
+
 [node name="Player" parent="." unique_id=354476350 instance=ExtResource("5_0rjd2")]
 position = Vector2(143, 597)
 
@@ -158,8 +191,14 @@ scale = Vector2(3.937563, 1.8300108)
 
 [node name="locator" type="Node2D" parent="." unique_id=1380948096]
 
-[node name="Marker2D" type="Marker2D" parent="locator" unique_id=23293733]
+[node name="cremation_room" type="Marker2D" parent="locator" unique_id=23293733]
 position = Vector2(419.18542, 494.19147)
+
+[node name="Autopsy_room" type="Marker2D" parent="locator" unique_id=1937865505]
+position = Vector2(1501, 497)
+
+[node name="FO" type="Marker2D" parent="locator" unique_id=1758910327]
+position = Vector2(917, 883)
 
 [node name="Switches" type="Node2D" parent="." unique_id=2140367118]
 

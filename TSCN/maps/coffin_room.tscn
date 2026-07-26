@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://b6c3ix7exaqy2"]
+
+[ext_resource type="Texture2D" uid="uid://bfv5ywjkq86ac" path="res://ASS/coffin room/wall.PNG" id="1_7mxdg"]
+[ext_resource type="Script" uid="uid://ba1nn07o28vrw" path="res://CODE/coffin_room.gd" id="1_m16i7"]
+[ext_resource type="Texture2D" uid="uid://bm541dskuruxm" path="res://ASS/coffin room/coffin.PNG" id="2_p6881"]
+[ext_resource type="Texture2D" uid="uid://7jgdukeqj30q" path="res://ASS/coffin room/Copy of bed tray 2.PNG" id="3_1iuj4"]
+[ext_resource type="Texture2D" uid="uid://buqb5ittnolfh" path="res://ASS/coffin room/table.PNG" id="4_jvx3j"]
+[ext_resource type="Texture2D" uid="uid://b8m4qv1sm4vu2" path="res://ASS/coffin room/dirt layer.PNG" id="5_rlua7"]
+[ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="6_yamsu"]
+[ext_resource type="PackedScene" uid="uid://bupbdguvgeaf5" path="res://TSCN/point_light_2d.tscn" id="7_p6881"]
+[ext_resource type="Script" uid="uid://ctc4hvwhf2ptr" path="res://CODE/coffinroom_lightswitch.gd" id="7_rlua7"]
+[ext_resource type="Texture2D" uid="uid://dbfx3xxwt47gg" path="res://ASS/Paint Layer 4 Merged.PNG" id="8_1iuj4"]
+[ext_resource type="Script" uid="uid://b7atnxjixybc6" path="res://CODE/ghost_in_the_security_room.gd" id="8_jvx3j"]
+[ext_resource type="Script" uid="uid://c11wn1syacgyk" path="res://CODE/from_coffinroom_to_hallway_1.gd" id="8_yamsu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(255.00006, 122.56)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 43.225216
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(167.00006, 83.99997)
+
+[sub_resource type="Gradient" id="Gradient_1iuj4"]
+offsets = PackedFloat32Array(0.25872093, 0.97965115)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3gngh"]
+gradient = SubResource("Gradient_1iuj4")
+fill = 1
+fill_from = Vector2(0.4722222, 0.62606835)
+fill_to = Vector2(0.80982906, 0.27564102)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m16i7"]
+radius = 90.94995
+height = 474.0
+
+[node name="Coffin_room" type="Node2D" unique_id=1241476762]
+script = ExtResource("1_m16i7")
+
+[node name="map" type="Node2D" parent="." unique_id=640430846]
+
+[node name="Wall" type="Sprite2D" parent="map" unique_id=175228736]
+position = Vector2(965, 540)
+texture = ExtResource("1_7mxdg")
+
+[node name="Coffin" type="Sprite2D" parent="map" unique_id=2023008248]
+position = Vector2(965, 540)
+texture = ExtResource("2_p6881")
+
+[node name="CopyOfBedTray2" type="Sprite2D" parent="map" unique_id=664615484]
+z_index = 1
+position = Vector2(965, 540)
+texture = ExtResource("3_1iuj4")
+
+[node name="Table" type="Sprite2D" parent="map" unique_id=1353555605]
+z_index = 1
+position = Vector2(965, 540)
+texture = ExtResource("4_jvx3j")
+
+[node name="DirtLayer" type="Sprite2D" parent="map" unique_id=2670026]
+position = Vector2(965, 540)
+texture = ExtResource("5_rlua7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=671768565]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1507302535]
+polygon = PackedVector2Array(669, 244, 669, 381, 515, 388, 564, 465, 628, 478, 626, 514, 463, 519, 463, 667, 682, 669, 690, 844, 324, 849, 317, 176)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1493325789]
+polygon = PackedVector2Array(328, 249, 1531, 249, 1533, 812, 1398, 819, 1398, 892, 1256, 887, 1252, 823, 326, 819, 324, 255, 187, 270, 161, 984, 1814, 1003, 1732, -193, 101, -118, 69, 332)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1290511081]
+polygon = PackedVector2Array(926, 249, 922, 381, 1327, 375, 1355, 223, 930, 210)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1994712570]
+position = Vector2(1055.5, 725.28)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Player" parent="." unique_id=354476350 instance=ExtResource("6_yamsu")]
+position = Vector2(1329, 857)
+
+[node name="AnimatedSprite2D" parent="Player" index="2" unique_id=1885471595]
+animation = &"walk_up"
+
+[node name="interactable" type="Node2D" parent="." unique_id=1752765210]
+
+[node name="lightswitch" type="Area2D" parent="interactable" unique_id=1293107490]
+position = Vector2(786.8275, 287.1344)
+script = ExtResource("7_rlua7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable/lightswitch" unique_id=1300522484]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="back_to_the_hallway_1" type="Area2D" parent="interactable" unique_id=1762445099]
+script = ExtResource("8_yamsu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable/back_to_the_hallway_1" unique_id=951460712]
+position = Vector2(1331.5, 850)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="light" type="Node2D" parent="." unique_id=109492106]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="light" unique_id=2119435837]
+color = Color(0, 0, 0, 1)
+
+[node name="PointLight2D" parent="light" unique_id=444991419 instance=ExtResource("7_p6881")]
+position = Vector2(962.00006, 419.10022)
+scale = Vector2(24.9375, 20.45614)
+texture = SubResource("GradientTexture2D_3gngh")
+
+[node name="ColorRect" type="ColorRect" parent="light" unique_id=1216687230]
+z_index = -1
+offset_right = 1989.0
+offset_bottom = 1158.0
+color = Color(0, 0, 0, 1)
+
+[node name="Ghost" type="Area2D" parent="." unique_id=1111365465]
+visible = false
+script = ExtResource("8_jvx3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ghost" unique_id=1747502790]
+position = Vector2(1428, 241)
+shape = SubResource("CapsuleShape2D_m16i7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ghost" unique_id=319674822]
+position = Vector2(1432, 235)
+scale = Vector2(1, 0.75562704)
+texture = ExtResource("8_1iuj4")
+
+[editable path="Player"]

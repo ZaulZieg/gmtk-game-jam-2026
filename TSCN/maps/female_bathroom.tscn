@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://ck3bmuln8njot"]
+
+[ext_resource type="Texture2D" uid="uid://cvsn6jxajp6jj" path="res://ASS/ladies room/ladies room/color.PNG" id="1_4xnts"]
+[ext_resource type="Texture2D" uid="uid://d4564qn3u745" path="res://ASS/ladies room/ladies room/dirt detail.PNG" id="2_55rwa"]
+[ext_resource type="Texture2D" uid="uid://d1hf1vq4b18vm" path="res://ASS/ladies room/ladies room/outline.PNG" id="3_1dphs"]
+[ext_resource type="Texture2D" uid="uid://b2dxfi66ueisj" path="res://ASS/ladies room/ladies room/Paint Layer 1.PNG" id="4_843xo"]
+[ext_resource type="Texture2D" uid="uid://dqnshgkt4wvvm" path="res://ASS/ladies room/ladies room/water flow.PNG" id="5_18wtm"]
+[ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="6_uqoat"]
+[ext_resource type="Script" uid="uid://d381uh70nxfo4" path="res://CODE/female_toilet_to_hallway.gd" id="7_55rwa"]
+[ext_resource type="Script" uid="uid://qacympcpm7dp" path="res://CODE/female_bathroom_lightswitch.gd" id="8_1dphs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(174, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(99, 61.703278)
+
+[sub_resource type="Gradient" id="Gradient_1dphs"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yf5fn"]
+gradient = SubResource("Gradient_1dphs")
+
+[node name="Female_bathroom" type="Node2D" unique_id=1604214905]
+
+[node name="Color" type="Sprite2D" parent="." unique_id=93795378]
+position = Vector2(811, 590)
+texture = ExtResource("1_4xnts")
+flip_h = true
+
+[node name="Outline" type="Sprite2D" parent="." unique_id=925488379]
+position = Vector2(811, 590)
+texture = ExtResource("3_1dphs")
+flip_h = true
+
+[node name="PaintLayer1" type="Sprite2D" parent="." unique_id=284898644]
+position = Vector2(811, 590)
+texture = ExtResource("4_843xo")
+flip_h = true
+
+[node name="WaterFlow" type="Sprite2D" parent="." unique_id=1472998189]
+position = Vector2(806, 849)
+texture = ExtResource("5_18wtm")
+flip_h = true
+
+[node name="DirtDetail" type="Sprite2D" parent="." unique_id=1048490567]
+position = Vector2(811, 590)
+texture = ExtResource("2_55rwa")
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1499054895]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=338888994]
+polygon = PackedVector2Array(736, 402, 1129, 404, 1112, 811, 1030, 819, 1030, 925, 860, 925, 860, 838, 738, 820, 754, 411, 532, 416, 492, 1091, 1709, 1100, 1567, 74, 454, 128, 449, 436)
+
+[node name="Player" parent="." unique_id=354476350 instance=ExtResource("6_uqoat")]
+position = Vector2(943, 871)
+
+[node name="AnimatedSprite2D" parent="Player" index="2" unique_id=1885471595]
+animation = &"walk_up"
+
+[node name="to_hallway" type="Area2D" parent="." unique_id=1539863858]
+script = ExtResource("7_55rwa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="to_hallway" unique_id=2092237329]
+position = Vector2(947, 877)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="lightswitch" type="Area2D" parent="." unique_id=962346430]
+script = ExtResource("8_1dphs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lightswitch" unique_id=1342902860]
+position = Vector2(785.5, 423.85162)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="light" type="Node2D" parent="." unique_id=955109411]
+
+[node name="ColorRect" type="ColorRect" parent="light" unique_id=362232607]
+z_index = -1
+offset_right = 1986.0
+offset_bottom = 1142.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="light" unique_id=414712553]
+color = Color(0, 0, 0, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="light" unique_id=954631342]
+position = Vector2(969.99994, 514)
+rotation = 1.5707964
+scale = Vector2(3.733331, 988.00006)
+texture = SubResource("GradientTexture1D_yf5fn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1123709678]
+
+[editable path="Player"]

@@ -10,7 +10,7 @@ func _ready() -> void:
 	Start_button.button_down.connect(start_pressed)
 	Start_button.pressed.connect(animate_start)
 	Yes_button.button_up.connect(func():
-		puzzle_done.emit()
+		Global.puzzle_done.emit()
 		)
 	
 func start_pressed():

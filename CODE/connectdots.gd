@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	if switch_2.pressed:
 		if all_switch.all(func(sw): return sw.button_pressed):
 			$Label.text = "all switch are on"
-			puzzle_done.emit()
+			Global.puzzle_done.emit()
 
 func switch3_on():
 	if switch_1.button_pressed:

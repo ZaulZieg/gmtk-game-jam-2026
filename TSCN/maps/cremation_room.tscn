@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://6ei43t400ql7"]
+
+[ext_resource type="Texture2D" uid="uid://c8x64yct37bcd" path="res://ASS/cremaion room/Paint Layer 1.PNG" id="1_33wt0"]
+[ext_resource type="Texture2D" uid="uid://y7feuuyd7bca" path="res://ASS/cremaion room/bed tray 2.PNG" id="2_kmn54"]
+[ext_resource type="Texture2D" uid="uid://dlxbhm4xlotj5" path="res://ASS/cremaion room/chair.PNG" id="3_qt8kc"]
+[ext_resource type="Texture2D" uid="uid://dcep4c72bc14t" path="res://ASS/cremaion room/clor.PNG" id="4_hqjf6"]
+[ext_resource type="Texture2D" uid="uid://di4ftswpim5l7" path="res://ASS/cremaion room/Copy of bed tray 2.PNG" id="5_es8m1"]
+[ext_resource type="Texture2D" uid="uid://dcbyefufv2d3n" path="res://ASS/cremaion room/dirt layer.PNG" id="6_g1pgq"]
+[ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="7_s7j5b"]
+[ext_resource type="Script" uid="uid://ccji0qemdi4jb" path="res://CODE/from_cremation_to_hallway_2.gd" id="8_kmn54"]
+[ext_resource type="Script" uid="uid://dlet7iedeyhwe" path="res://CODE/cremation_room_lightswithc.gd" id="9_qt8kc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(217.00003, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(153.60217, 68.02173)
+
+[node name="Cremation_room" type="Node2D" unique_id=1495892090]
+
+[node name="PaintLayer1" type="Sprite2D" parent="." unique_id=966112620]
+position = Vector2(1294, 611)
+texture = ExtResource("1_33wt0")
+
+[node name="BedTray2" type="Sprite2D" parent="." unique_id=711650582]
+position = Vector2(1294, 611)
+texture = ExtResource("2_kmn54")
+
+[node name="Chair" type="Sprite2D" parent="." unique_id=92725119]
+position = Vector2(1481, 642)
+texture = ExtResource("3_qt8kc")
+
+[node name="Clor" type="Sprite2D" parent="." unique_id=685916765]
+position = Vector2(1481, 642)
+texture = ExtResource("4_hqjf6")
+
+[node name="Chair2" type="Sprite2D" parent="." unique_id=2111187308]
+position = Vector2(1494, 761)
+texture = ExtResource("3_qt8kc")
+
+[node name="Clor2" type="Sprite2D" parent="." unique_id=1009094609]
+position = Vector2(1494, 761)
+texture = ExtResource("4_hqjf6")
+
+[node name="CopyOfBedTray2" type="Sprite2D" parent="." unique_id=1122732119]
+position = Vector2(1512, 250)
+texture = ExtResource("5_es8m1")
+
+[node name="DirtLayer" type="Sprite2D" parent="." unique_id=1119086736]
+position = Vector2(1294, 611)
+texture = ExtResource("6_g1pgq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=744278521]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1340176002]
+polygon = PackedVector2Array(754, 274, 1141, 271, 1141, 424, 1340, 419, 1353, 709, 1419, 707, 1419, 898, 1358, 897, 1026, 914, 1029, 1008, 845, 1005, 853, 917, 770, 914, 772, 595, 806, 593, 790, 287, 526, 279, 552, 1140, 1667, 1145, 1566, -1, 466, 30, 419, 271)
+
+[node name="Player" parent="." unique_id=354476350 instance=ExtResource("7_s7j5b")]
+position = Vector2(933, 970)
+
+[node name="AnimatedSprite2D" parent="Player" index="2" unique_id=1885471595]
+animation = &"walk_up"
+
+[node name="to_hallway_2" type="Area2D" parent="." unique_id=93986075]
+script = ExtResource("8_kmn54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="to_hallway_2" unique_id=337197602]
+position = Vector2(940.5, 967.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="lightswithc" type="Area2D" parent="." unique_id=1343892679]
+script = ExtResource("9_qt8kc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lightswithc" unique_id=928654563]
+position = Vector2(889, 304)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[editable path="Player"]

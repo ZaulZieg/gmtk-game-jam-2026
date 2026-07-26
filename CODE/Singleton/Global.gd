@@ -5,7 +5,7 @@ signal puzzle_pc1
 signal puzzle_up
 signal puzzle_down
 signal interactable(is_on : bool)
-
+signal puzzle_done
 signal dialog_closed
 #signal note_closed
 

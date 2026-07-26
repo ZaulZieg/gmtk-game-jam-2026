@@ -13,9 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://cvjmy5e365jjm" path="res://icon.svg" id="11_jnpad"]
 [ext_resource type="PackedScene" uid="uid://bupbdguvgeaf5" path="res://TSCN/point_light_2d.tscn" id="12_k1w7o"]
 [ext_resource type="Script" uid="uid://csatv8sxi033g" path="res://CODE/lampswitchhall.gd" id="12_mqdtk"]
-[ext_resource type="Script" uid="uid://5kfp6ik3wo0k" path="res://CODE/Ghost.gd" id="13_0ik4w"]
 [ext_resource type="Texture2D" uid="uid://berlky4iu124k" path="res://ASS/Switch on.png" id="13_q6tf1"]
 [ext_resource type="Script" uid="uid://bo2x2usp781jq" path="res://CODE/to_hallway_2.gd" id="14_1clhh"]
+[ext_resource type="Script" uid="uid://cpa8bbh1f45tb" path="res://CODE/ghost_area_coffin_room.gd" id="15_1clhh"]
+[ext_resource type="Script" uid="uid://cowoxpbecrw2u" path="res://CODE/to_document.gd" id="15_k1w7o"]
+[ext_resource type="Script" uid="uid://02w1qtu5u47n" path="res://CODE/to_coffinroom.gd" id="16_q0b5l"]
+[ext_resource type="Script" uid="uid://c1fhtfvk1f440" path="res://CODE/to_male_toilet.gd" id="17_c3a61"]
+[ext_resource type="Script" uid="uid://cqldhlkkb0s2y" path="res://CODE/to_female_toilet.gd" id="18_yx8as"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(1491, 249.64684)
@@ -58,6 +62,15 @@ size = Vector2(184, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
 size = Vector2(43, 177.00002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7numd"]
+size = Vector2(84.5932, 192.52039)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1u0y"]
+size = Vector2(179.5517, 51.010742)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s0fj"]
+size = Vector2(160, 74)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
 size = Vector2(128.52405, 127.59827)
@@ -203,9 +216,37 @@ script = ExtResource("14_1clhh")
 position = Vector2(31.399902, -6.5303345)
 shape = SubResource("RectangleShape2D_fcnqv")
 
+[node name="to_document" type="Area2D" parent="portal" unique_id=1794429844]
+script = ExtResource("15_k1w7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal/to_document" unique_id=1978932775]
+position = Vector2(95.7034, 853)
+shape = SubResource("RectangleShape2D_7numd")
+
+[node name="to_coffinroom" type="Area2D" parent="portal" unique_id=1174913289]
+script = ExtResource("16_q0b5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal/to_coffinroom" unique_id=17558665]
+position = Vector2(407.22415, 525.5054)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="to_male_toilet" type="Area2D" parent="portal" unique_id=1211941236]
+script = ExtResource("17_c3a61")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal/to_male_toilet" unique_id=312976832]
+position = Vector2(1092.5, 518.5)
+shape = SubResource("RectangleShape2D_5s0fj")
+
+[node name="to_female_toilet" type="Area2D" parent="portal" unique_id=1860775591]
+script = ExtResource("18_yx8as")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal/to_female_toilet" unique_id=1924823331]
+position = Vector2(1405, 514)
+shape = SubResource("RectangleShape2D_5s0fj")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=2098880334]
 visible = false
-script = ExtResource("13_0ik4w")
+script = ExtResource("15_1clhh")
 
 [node name="ghost" type="Sprite2D" parent="Area2D" unique_id=1913941503]
 position = Vector2(990, 700)
@@ -223,5 +264,17 @@ position = Vector2(608.79865, 1001.1803)
 
 [node name="from_hallway_2" type="Marker2D" parent="Markers" unique_id=312453127]
 position = Vector2(1792, 691)
+
+[node name="from_coffin_room" type="Marker2D" parent="Markers" unique_id=797765166]
+position = Vector2(410, 524)
+
+[node name="from_male_toilet" type="Marker2D" parent="Markers" unique_id=1566981160]
+position = Vector2(1070, 545)
+
+[node name="from_female_toilet" type="Marker2D" parent="Markers" unique_id=1430285511]
+position = Vector2(1414, 550)
+
+[node name="from_document_room" type="Marker2D" parent="Markers" unique_id=1723432472]
+position = Vector2(138, 852)
 
 [editable path="Player"]

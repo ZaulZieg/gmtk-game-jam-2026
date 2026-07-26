@@ -1,0 +1,324 @@
+[gd_scene format=3 uid="uid://bne2mdp4uhr1j"]
+
+[ext_resource type="Texture2D" uid="uid://s1bbtfx7ywb5" path="res://ASS/Documentvroom/document room/wall.PNG" id="1_k8bws"]
+[ext_resource type="Texture2D" uid="uid://ci26k785inkjr" path="res://ASS/Documentvroom/document room/desk 2.PNG" id="2_lgwhq"]
+[ext_resource type="Texture2D" uid="uid://dks73alwmwacj" path="res://ASS/Documentvroom/document room/desk 3.PNG" id="3_oogmt"]
+[ext_resource type="Texture2D" uid="uid://bydsr0kbc5krp" path="res://ASS/Documentvroom/document room/dirt.PNG" id="4_x4t3a"]
+[ext_resource type="PackedScene" uid="uid://bupbdguvgeaf5" path="res://TSCN/point_light_2d.tscn" id="5_8g66m"]
+[ext_resource type="PackedScene" uid="uid://bjm5valrvvloq" path="res://TSCN/Chara/player_2.tscn" id="6_surpm"]
+[ext_resource type="Script" uid="uid://d2kvcdlwe4agp" path="res://CODE/pc_1.gd" id="7_lgwhq"]
+[ext_resource type="Script" uid="uid://dnlnjgb5lk6bb" path="res://CODE/from_doc_to_hall.gd" id="8_oogmt"]
+
+[sub_resource type="Gradient" id="Gradient_gelre"]
+offsets = PackedFloat32Array(0.008720931, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf5fn"]
+gradient = SubResource("Gradient_gelre")
+fill = 1
+fill_from = Vector2(0.48504272, 0)
+fill_to = Vector2(0.5405983, 1)
+
+[sub_resource type="Gradient" id="Gradient_oo5do"]
+offsets = PackedFloat32Array(0.16569768, 0.3110465, 0.65988374)
+colors = PackedColorArray(1, 1, 1, 1, 0.119186044, 0.119186044, 0.119186044, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_57qmd"]
+gradient = SubResource("Gradient_oo5do")
+fill = 2
+fill_from = Vector2(0.48931623, 0.50641024)
+fill_to = Vector2(0.5192308, 1)
+
+[sub_resource type="Gradient" id="Gradient_hbvlu"]
+offsets = PackedFloat32Array(0, 0.49127907)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3gngh"]
+gradient = SubResource("Gradient_hbvlu")
+fill = 1
+fill_from = Vector2(0.48076922, 0.43376067)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(1005, 273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tqct"]
+size = Vector2(1005, 167.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xw66g"]
+size = Vector2(211, 264.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kj80q"]
+size = Vector2(317, 264.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgwhq"]
+radius = 30.016663
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4t3a"]
+size = Vector2(120, 89)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_surpm"]
+size = Vector2(25, 213.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gelre"]
+size = Vector2(100.5, 21.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(114.99997, 20)
+
+[sub_resource type="GDScript" id="GDScript_lgwhq"]
+script/source = "extends Area2D
+@onready var player: Player = $\"../../Player\"
+
+var player_count : Array = []
+@onready var pc_2: PointLight2D = $\"../../light/pclight/pc2\"
+var already_played : bool = false
+
+func _ready() -> void:
+	pc_2.enabled = Boolvariable.doc_room_pc2
+	body_entered.connect(player_in)
+	body_exited.connect(player_out)
+	Global.puzzle_done.connect(puzzle_done)
+
+func player_in(body):
+	if body is Player:
+		player_count.append(body)
+		Global.interactable_arr.append(body)
+func player_out(body):
+	if body is Player:
+		player_count.pop_front()
+		Global.interactable_arr.pop_back()
+		
+func _input(event: InputEvent) -> void:
+	if event and player_count.size() > 0:
+		if event.is_action_pressed(\"interact\"):
+			if !already_played:
+				play_game()
+			else:
+				Boolvariable.doc_room_pc2 = !Boolvariable.doc_room_pc2
+				pc_2.enabled = Boolvariable.doc_room_pc2
+			
+			
+func puzzle_done():
+	already_played = true
+	Boolvariable.doc_room_pc2 = !Boolvariable.doc_room_pc2
+	pc_2.enabled = Boolvariable.doc_room_pc2
+	$\"../../puzzle\".get_child(0).queue_free()
+	player.player_able_to_move = true
+
+func play_game():
+	player.player_able_to_move = false
+	var scene = preload(\"res://TSCN/puzzle/control.tscn\")
+	var inst = scene.instantiate()
+	$\"../../puzzle\".add_child(inst)
+	
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oogmt"]
+size = Vector2(114.99997, 20)
+
+[sub_resource type="GDScript" id="GDScript_oogmt"]
+script/source = "extends Area2D
+
+var player_count : Array = []
+@onready var pc_3: PointLight2D = $\"../../light/pclight/pc3\"
+
+func _ready() -> void:
+	pc_3.enabled = Boolvariable.doc_room_pc3
+	body_entered.connect(player_in)
+	body_exited.connect(player_out)
+
+func player_in(body):
+	if body is Player:
+		player_count.append(body)
+		Global.interactable_arr.append(body)
+func player_out(body):
+	if body is Player:
+		player_count.pop_front()
+		Global.interactable_arr.pop_back()
+		
+func _input(event: InputEvent) -> void:
+	if event and player_count.size() > 0:
+		if event.is_action_pressed(\"interact\"):
+			Boolvariable.doc_room_pc3 = !Boolvariable.doc_room_pc3
+			pc_3.enabled = Boolvariable.doc_room_pc3
+"
+
+[sub_resource type="GDScript" id="GDScript_x4t3a"]
+script/source = "extends Area2D
+@onready var main_light: PointLight2D = $\"../../light/mainLight\"
+
+var player_count : Array = []
+
+func _ready() -> void:
+	main_light.enabled = Boolvariable.doc_room_light
+	body_entered.connect(player_in)
+	body_exited.connect(player_out)
+
+func player_in(body):
+	if body is Player:
+		player_count.append(body)
+		Global.interactable_arr.append(body)
+func player_out(body):
+	if body is Player:
+		player_count.pop_front()
+		Global.interactable_arr.pop_back()
+		
+func _input(event: InputEvent) -> void:
+	if event and player_count.size() > 0:
+		if event.is_action_pressed(\"interact\"):
+			Boolvariable.doc_room_light = !Boolvariable.doc_room_light
+			main_light.enabled = Boolvariable.doc_room_light
+			Boolvariable.update_sanity()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8g66m"]
+size = Vector2(114.99997, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(75.5979, 108.00003)
+
+[node name="Document_room" type="Node2D" unique_id=2116528392]
+
+[node name="Sprite" type="Node2D" parent="." unique_id=978725575]
+
+[node name="Wall" type="Sprite2D" parent="Sprite" unique_id=994585787]
+position = Vector2(807, 450)
+texture = ExtResource("1_k8bws")
+flip_h = true
+
+[node name="Desk2" type="Sprite2D" parent="Sprite" unique_id=2024259891]
+z_index = 1
+position = Vector2(807, 450)
+texture = ExtResource("2_lgwhq")
+flip_h = true
+
+[node name="Desk3" type="Sprite2D" parent="Sprite" unique_id=1100915471]
+z_index = 1
+position = Vector2(807, 450)
+texture = ExtResource("3_oogmt")
+flip_h = true
+
+[node name="Dirt" type="Sprite2D" parent="Sprite" unique_id=1538039312]
+position = Vector2(807, 450)
+texture = ExtResource("4_x4t3a")
+flip_h = true
+
+[node name="light" type="Node2D" parent="." unique_id=1407336242]
+
+[node name="ColorRect" type="ColorRect" parent="light" unique_id=781160033]
+z_index = -1
+offset_right = 1958.0
+offset_bottom = 1122.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="light" unique_id=2142788556]
+color = Color(0, 0, 0, 1)
+
+[node name="mainLight" parent="light" unique_id=444991419 instance=ExtResource("5_8g66m")]
+position = Vector2(919.99994, 574.00006)
+scale = Vector2(19.812504, 12.781249)
+energy = 0.95
+texture = SubResource("GradientTexture2D_yf5fn")
+
+[node name="pclight" type="Node2D" parent="light" unique_id=1443399655]
+
+[node name="pc1" type="PointLight2D" parent="light/pclight" unique_id=280372961]
+position = Vector2(783.4807, 451.8949)
+scale = Vector2(6.578729, 4.815784)
+texture = SubResource("GradientTexture2D_57qmd")
+
+[node name="pc2" type="PointLight2D" parent="light/pclight" unique_id=1770336953]
+position = Vector2(872.00006, 672.3345)
+rotation = 1.5707964
+scale = Vector2(1.6466641, 3.555149)
+texture = SubResource("GradientTexture2D_3gngh")
+
+[node name="pc3" type="PointLight2D" parent="light/pclight" unique_id=1411882227]
+position = Vector2(1251, 672.00006)
+rotation = 1.5707964
+scale = Vector2(1.6466641, 3.555149)
+texture = SubResource("GradientTexture2D_3gngh")
+
+[node name="Player" parent="." unique_id=354476350 instance=ExtResource("6_surpm")]
+position = Vector2(1345, 651)
+
+[node name="AnimatedSprite2D" parent="Player" index="2" unique_id=1885471595]
+animation = &"walk_left"
+
+[node name="collision" type="StaticBody2D" parent="." unique_id=1755365408]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision" unique_id=1865415763]
+position = Vector2(920.5, 336.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="collision" unique_id=158425035]
+position = Vector2(916, 810.25)
+shape = SubResource("RectangleShape2D_7tqct")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="collision" unique_id=788238137]
+position = Vector2(507.5, 608.625)
+shape = SubResource("RectangleShape2D_xw66g")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="collision" unique_id=1807093661]
+position = Vector2(845.5, 459)
+shape = SubResource("RectangleShape2D_kj80q")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="collision" unique_id=1014526320]
+position = Vector2(1240, 505)
+shape = SubResource("CircleShape2D_lgwhq")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="collision" unique_id=1815326636]
+position = Vector2(1457, 519.5)
+shape = SubResource("RectangleShape2D_x4t3a")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="collision" unique_id=1619892757]
+position = Vector2(1513.5, 627.25)
+shape = SubResource("RectangleShape2D_surpm")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="collision" unique_id=1579929167]
+position = Vector2(1461.75, 714.125)
+shape = SubResource("RectangleShape2D_gelre")
+
+[node name="detection_area" type="Node2D" parent="." unique_id=1620852054]
+
+[node name="pc1" type="Area2D" parent="detection_area" unique_id=674188720]
+script = ExtResource("7_lgwhq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area/pc1" unique_id=521112912]
+position = Vector2(784.5, 600.70996)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="pc2" type="Area2D" parent="detection_area" unique_id=236750598]
+script = SubResource("GDScript_lgwhq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area/pc2" unique_id=1813681468]
+position = Vector2(888, 712)
+shape = SubResource("RectangleShape2D_oogmt")
+
+[node name="pc3" type="Area2D" parent="detection_area" unique_id=2104211654]
+script = SubResource("GDScript_oogmt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area/pc3" unique_id=519587583]
+position = Vector2(1270, 706)
+shape = SubResource("RectangleShape2D_oogmt")
+
+[node name="lightswitch" type="Area2D" parent="detection_area" unique_id=338291443]
+script = SubResource("GDScript_x4t3a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area/lightswitch" unique_id=1337791253]
+position = Vector2(1093, 480)
+shape = SubResource("RectangleShape2D_8g66m")
+
+[node name="portal" type="Node2D" parent="." unique_id=236809972]
+
+[node name="Area2D" type="Area2D" parent="portal" unique_id=223293256]
+script = ExtResource("8_oogmt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal/Area2D" unique_id=1946177995]
+position = Vector2(1450.201, 652)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="puzzle" type="CanvasLayer" parent="." unique_id=1141554691]
+
+[editable path="Player"]
