@@ -21,4 +21,5 @@ func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0:
 		if event.is_action_pressed("interact"):
 			Boolvariable.doc_room_pc1 = !Boolvariable.doc_room_pc1
+			await get_tree().process_frame
 			pc_1.enabled = Boolvariable.doc_room_pc1

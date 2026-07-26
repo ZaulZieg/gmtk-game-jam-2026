@@ -5,11 +5,12 @@ extends Area2D
 
 var detect : Array = []
 func _ready() -> void:
+	point_light_2d.enabled = Boolvariable.hallway1_light_left
 	body_entered.connect(player_entered)
 	body_exited.connect(player_exited)
 	
 func _process(delta: float) -> void:
-	point_light_2d.enabled = Boolvariable.hallway1_light_left
+	pass
 	
 	
 func player_entered(body):
@@ -25,7 +26,10 @@ func player_exited(body):
 func _input(event: InputEvent) -> void:
 	if event and detect.size() > 0:
 		if Input.is_action_just_pressed("interact"):
+			
 			Boolvariable.hallway1_light_left = !Boolvariable.hallway1_light_left
+			await get_tree().process_frame
+			point_light_2d.enabled = Boolvariable.hallway1_light_left
 			#player.room_light_on = point_light_2d.enabled or point_light_2d_2.enabled
 			#print(point_light_2d.enabled or point_light_2d_2.enabled)
 			Boolvariable.update_sanity()

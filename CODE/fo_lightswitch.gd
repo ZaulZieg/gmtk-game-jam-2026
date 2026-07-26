@@ -7,6 +7,7 @@ func _ready() -> void:
 	super()
 	update_light()
 	Global.puzzle_done.connect(puzzle_done)
+	await get_tree().process_frame
 	update_ghost_visibility()
 
 func player_in(body):
@@ -16,11 +17,13 @@ func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0 :
 		if Input.is_action_just_pressed("interact"):
 			if !Boolvariable.fo_light:
+				await get_tree().process_frame
 				Boolvariable.fo_light = true
 				update_light()
 			else:
 				play_game()
 			#await get_tree().create_timer(0.3).timeout
+			await get_tree().process_frame
 			Boolvariable.update_sanity()
 			update_ghost_visibility()
 
@@ -42,6 +45,8 @@ func conti():
 	update_ghost_visibility()
 
 func update_ghost_visibility():
+	await get_tree().process_frame
 	ghosty.visible = Boolvariable.fo_ghost
 func update_light():
+	await get_tree().process_frame
 	point_light_2d.enabled = Boolvariable.fo_light

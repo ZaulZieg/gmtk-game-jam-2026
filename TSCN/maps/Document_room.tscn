@@ -76,6 +76,7 @@ var already_played : bool = false
 
 func _ready() -> void:
 	pc_2.enabled = Boolvariable.doc_room_pc2
+	await get_tree().process_frame
 	if !Boolvariable.doc_room_pc2:
 		already_played = true
 	body_entered.connect(player_in)
@@ -98,12 +99,14 @@ func _input(event: InputEvent) -> void:
 				play_game()
 			else:
 				Boolvariable.doc_room_pc2 = !Boolvariable.doc_room_pc2
+				await get_tree().process_frame
 				pc_2.enabled = Boolvariable.doc_room_pc2
 			
 			
 func puzzle_done():
 	already_played = true
 	Boolvariable.doc_room_pc2 = !Boolvariable.doc_room_pc2
+	await get_tree().process_frame
 	pc_2.enabled = Boolvariable.doc_room_pc2
 	$\"../../puzzle\".get_child(0).queue_free()
 	player.player_able_to_move = true
@@ -143,6 +146,7 @@ func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0:
 		if event.is_action_pressed(\"interact\"):
 			Boolvariable.doc_room_pc3 = !Boolvariable.doc_room_pc3
+			await get_tree().process_frame
 			pc_3.enabled = Boolvariable.doc_room_pc3
 "
 
@@ -170,6 +174,7 @@ func _input(event: InputEvent) -> void:
 	if event and player_count.size() > 0:
 		if event.is_action_pressed(\"interact\"):
 			Boolvariable.doc_room_light = !Boolvariable.doc_room_light
+			await get_tree().process_frame
 			main_light.enabled = Boolvariable.doc_room_light
 			Boolvariable.update_sanity()
 "

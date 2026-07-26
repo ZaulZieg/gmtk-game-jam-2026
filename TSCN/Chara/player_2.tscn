@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://d35uyeua1y0jh" path="res://ASS/Bubble Text.png" id="23_3kyy1"]
 [ext_resource type="Script" uid="uid://ceg0gahsh0lvy" path="res://CODE/ghostlight.gd" id="25_x0w70"]
 [ext_resource type="PackedScene" uid="uid://ctpyidbce6qui" path="res://TSCN/PauseMenu.tscn" id="26_qnfhv"]
+[ext_resource type="PackedScene" uid="uid://dsobrvxv5lodx" path="res://TSCN/todolist.tscn" id="27_edve7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -246,3 +247,5 @@ size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 46
 text = "05:00"
 horizontal_alignment = 2
+
+[node name="CanvasLayer2" parent="." unique_id=1274522397 instance=ExtResource("27_edve7")]
